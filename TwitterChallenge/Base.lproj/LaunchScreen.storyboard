@@ -24,7 +24,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="F4Y-gr-6IX">
                                 <rect key="frame" x="85.666666666666686" y="250" width="242.66666666666663" height="236"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newIcon" translatesAutoresizingMaskIntoConstraints="NO" id="TpD-f7-GC0">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="TpD-f7-GC0">
                                         <rect key="frame" x="21.333333333333329" y="0.0" width="200" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="MgB-6g-eKg"/>
@@ -53,6 +53,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="newIcon" width="512" height="512"/>
+        <image name="launchIcon" width="512" height="512"/>
     </resources>
 </document>

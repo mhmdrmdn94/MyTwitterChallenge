@@ -56,15 +56,23 @@
 		770DD2581F4DC32A00F9AAB4 /* TwitterChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				770DD2591F4DC32A00F9AAB4 /* AppDelegate.swift */,
 				770DD25B1F4DC32A00F9AAB4 /* ViewController.swift */,
 				770DD25D1F4DC32A00F9AAB4 /* Main.storyboard */,
+				770DD26E1F4DD28500F9AAB4 /* Supporting files */,
+			);
+			path = TwitterChallenge;
+			sourceTree = "<group>";
+		};
+		770DD26E1F4DD28500F9AAB4 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				770DD2601F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld */,
+				770DD2591F4DC32A00F9AAB4 /* AppDelegate.swift */,
 				770DD2631F4DC32A00F9AAB4 /* Assets.xcassets */,
 				770DD2651F4DC32A00F9AAB4 /* LaunchScreen.storyboard */,
 				770DD2681F4DC32A00F9AAB4 /* Info.plist */,
-				770DD2601F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld */,
 			);
-			path = TwitterChallenge;
+			name = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +315,7 @@
 				770DD26D1F4DC32A00F9AAB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
