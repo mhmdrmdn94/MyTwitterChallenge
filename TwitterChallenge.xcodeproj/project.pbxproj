@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		770DD25A1F4DC32A00F9AAB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770DD2591F4DC32A00F9AAB4 /* AppDelegate.swift */; };
-		770DD25C1F4DC32A00F9AAB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770DD25B1F4DC32A00F9AAB4 /* ViewController.swift */; };
+		770DD25C1F4DC32A00F9AAB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770DD25B1F4DC32A00F9AAB4 /* LoginViewController.swift */; };
 		770DD25F1F4DC32A00F9AAB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770DD25D1F4DC32A00F9AAB4 /* Main.storyboard */; };
 		770DD2621F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770DD2601F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld */; };
 		770DD2641F4DC32A00F9AAB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770DD2631F4DC32A00F9AAB4 /* Assets.xcassets */; };
 		770DD2671F4DC32A00F9AAB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770DD2651F4DC32A00F9AAB4 /* LaunchScreen.storyboard */; };
+		77C0E01A1F4E9A4400F95173 /* FollwersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */; };
+		77C0E01C1F4E9A6000F95173 /* FollowerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		770DD2561F4DC32A00F9AAB4 /* TwitterChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		770DD2591F4DC32A00F9AAB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		770DD25B1F4DC32A00F9AAB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		770DD25B1F4DC32A00F9AAB4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../../LoginViewController.swift; sourceTree = "<group>"; };
 		770DD25E1F4DC32A00F9AAB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		770DD2611F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TwitterChallenge.xcdatamodel; sourceTree = "<group>"; };
 		770DD2631F4DC32A00F9AAB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		770DD2661F4DC32A00F9AAB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		770DD2681F4DC32A00F9AAB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollwersTableViewController.swift; sourceTree = "<group>"; };
+		77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +60,9 @@
 		770DD2581F4DC32A00F9AAB4 /* TwitterChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				770DD25B1F4DC32A00F9AAB4 /* ViewController.swift */,
 				770DD25D1F4DC32A00F9AAB4 /* Main.storyboard */,
+				77C0E0111F4E98E400F95173 /* Presentation */,
+				77C0E0151F4E999200F95173 /* Data */,
 				770DD26E1F4DD28500F9AAB4 /* Supporting files */,
 			);
 			path = TwitterChallenge;
@@ -73,6 +78,71 @@
 				770DD2681F4DC32A00F9AAB4 /* Info.plist */,
 			);
 			name = "Supporting files";
+			sourceTree = "<group>";
+		};
+		77C0E0111F4E98E400F95173 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				77C0E0141F4E993C00F95173 /* Login */,
+				77C0E0131F4E993C00F95173 /* FollowersList */,
+				77C0E0121F4E993C00F95173 /* FollowerDetails */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		77C0E0121F4E993C00F95173 /* FollowerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */,
+			);
+			path = FollowerDetails;
+			sourceTree = "<group>";
+		};
+		77C0E0131F4E993C00F95173 /* FollowersList */ = {
+			isa = PBXGroup;
+			children = (
+				77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */,
+			);
+			path = FollowersList;
+			sourceTree = "<group>";
+		};
+		77C0E0141F4E993C00F95173 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				770DD25B1F4DC32A00F9AAB4 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		77C0E0151F4E999200F95173 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				77C0E0181F4E999200F95173 /* Login */,
+				77C0E0171F4E999200F95173 /* FollowersList */,
+				77C0E0161F4E999200F95173 /* FollowerDetails */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		77C0E0161F4E999200F95173 /* FollowerDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FollowerDetails;
+			sourceTree = "<group>";
+		};
+		77C0E0171F4E999200F95173 /* FollowersList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FollowersList;
+			sourceTree = "<group>";
+		};
+		77C0E0181F4E999200F95173 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,9 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				770DD25C1F4DC32A00F9AAB4 /* ViewController.swift in Sources */,
+				770DD25C1F4DC32A00F9AAB4 /* LoginViewController.swift in Sources */,
 				770DD25A1F4DC32A00F9AAB4 /* AppDelegate.swift in Sources */,
+				77C0E01C1F4E9A6000F95173 /* FollowerDetailsViewController.swift in Sources */,
 				770DD2621F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld in Sources */,
+				77C0E01A1F4E9A4400F95173 /* FollwersTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,19 +21,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="F4Y-gr-6IX">
-                                <rect key="frame" x="85.666666666666686" y="250" width="242.66666666666663" height="236"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tZO-dk-bRl">
+                                <rect key="frame" x="57" y="199" width="300" height="338.33333333333337"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="TpD-f7-GC0">
-                                        <rect key="frame" x="21.333333333333329" y="0.0" width="200" height="200"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="launch_image" translatesAutoresizingMaskIntoConstraints="NO" id="lFv-Pi-rYg">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="MgB-6g-eKg"/>
-                                            <constraint firstAttribute="width" constant="200" id="w5a-JL-nRf"/>
+                                            <constraint firstAttribute="width" constant="300" id="EK9-NU-oyX"/>
+                                            <constraint firstAttribute="height" constant="300" id="d3B-uo-G4z"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter Challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYU-C9-eQB">
-                                        <rect key="frame" x="0.0" y="200" width="242.66666666666663" height="36"/>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter's Challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYU-C9-eQB">
+                                        <rect key="frame" x="12.333333333333343" y="300" width="275.66666666666663" height="38.333333333333371"/>
+                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="35"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -42,8 +42,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.80095734409999997" green="0.88525203740000002" blue="1" alpha="0.36749009683098594" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="F4Y-gr-6IX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5cJ-I0-exQ"/>
-                            <constraint firstItem="F4Y-gr-6IX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DcR-C0-KcH"/>
+                            <constraint firstItem="tZO-dk-bRl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Mvq-e2-EAG"/>
+                            <constraint firstItem="tZO-dk-bRl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Rz3-kF-6OZ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -53,6 +53,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchIcon" width="512" height="512"/>
+        <image name="launch_image" width="512" height="512"/>
     </resources>
 </document>
