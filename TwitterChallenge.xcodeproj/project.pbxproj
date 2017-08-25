@@ -33,6 +33,12 @@
 		77B7086F1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7086E1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift */; };
 		77B708711F501F420096CE34 /* FollowerDetailsLocalDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708701F501F420096CE34 /* FollowerDetailsLocalDS.swift */; };
 		77B708731F5020250096CE34 /* APIsConstantKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708721F5020250096CE34 /* APIsConstantKeys.swift */; };
+		77B708791F502B510096CE34 /* Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708781F502B510096CE34 /* Usecase.swift */; };
+		77B7087B1F502B970096CE34 /* LoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087A1F502B970096CE34 /* LoginUsecase.swift */; };
+		77B7087D1F502BB80096CE34 /* FloolowersListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087C1F502BB80096CE34 /* FloolowersListUsecase.swift */; };
+		77B7087F1F502C070096CE34 /* FollowerDetailsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087E1F502C070096CE34 /* FollowerDetailsUsecase.swift */; };
+		77B708811F502C2A0096CE34 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708801F502C2A0096CE34 /* BasePresenter.swift */; };
+		77B708831F502C3C0096CE34 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708821F502C3C0096CE34 /* BaseViewController.swift */; };
 		77C0E01A1F4E9A4400F95173 /* FollwersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */; };
 		77C0E01C1F4E9A6000F95173 /* FollowerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +72,12 @@
 		77B7086E1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsRemoteDS.swift; sourceTree = "<group>"; };
 		77B708701F501F420096CE34 /* FollowerDetailsLocalDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsLocalDS.swift; sourceTree = "<group>"; };
 		77B708721F5020250096CE34 /* APIsConstantKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsConstantKeys.swift; sourceTree = "<group>"; };
+		77B708781F502B510096CE34 /* Usecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usecase.swift; sourceTree = "<group>"; };
+		77B7087A1F502B970096CE34 /* LoginUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUsecase.swift; sourceTree = "<group>"; };
+		77B7087C1F502BB80096CE34 /* FloolowersListUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloolowersListUsecase.swift; sourceTree = "<group>"; };
+		77B7087E1F502C070096CE34 /* FollowerDetailsUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsUsecase.swift; sourceTree = "<group>"; };
+		77B708801F502C2A0096CE34 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		77B708821F502C3C0096CE34 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollwersTableViewController.swift; sourceTree = "<group>"; };
 		77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,7 +113,10 @@
 			isa = PBXGroup;
 			children = (
 				770DD25D1F4DC32A00F9AAB4 /* Main.storyboard */,
+				77B708801F502C2A0096CE34 /* BasePresenter.swift */,
+				77B708821F502C3C0096CE34 /* BaseViewController.swift */,
 				77C0E0111F4E98E400F95173 /* Presentation */,
+				77B708741F502B2A0096CE34 /* Business */,
 				77C0E0151F4E999200F95173 /* Data */,
 				770DD26E1F4DD28500F9AAB4 /* Supporting files */,
 			);
@@ -118,6 +133,41 @@
 				770DD2681F4DC32A00F9AAB4 /* Info.plist */,
 			);
 			name = "Supporting files";
+			sourceTree = "<group>";
+		};
+		77B708741F502B2A0096CE34 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				77B708781F502B510096CE34 /* Usecase.swift */,
+				77B708771F502B2A0096CE34 /* Login */,
+				77B708761F502B2A0096CE34 /* FollowersList */,
+				77B708751F502B2A0096CE34 /* FollowerDetails */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		77B708751F502B2A0096CE34 /* FollowerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				77B7087E1F502C070096CE34 /* FollowerDetailsUsecase.swift */,
+			);
+			path = FollowerDetails;
+			sourceTree = "<group>";
+		};
+		77B708761F502B2A0096CE34 /* FollowersList */ = {
+			isa = PBXGroup;
+			children = (
+				77B7087C1F502BB80096CE34 /* FloolowersListUsecase.swift */,
+			);
+			path = FollowersList;
+			sourceTree = "<group>";
+		};
+		77B708771F502B2A0096CE34 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				77B7087A1F502B970096CE34 /* LoginUsecase.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		77C0E0111F4E98E400F95173 /* Presentation */ = {
@@ -278,11 +328,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				77B7085F1F501E4D0096CE34 /* FollowerDetailsRepository.swift in Sources */,
+				77B708811F502C2A0096CE34 /* BasePresenter.swift in Sources */,
+				77B7087B1F502B970096CE34 /* LoginUsecase.swift in Sources */,
 				77B708671F501ED40096CE34 /* FollowersListDataSource.swift in Sources */,
+				77B708831F502C3C0096CE34 /* BaseViewController.swift in Sources */,
 				7797EAC21F4F689F005C9734 /* FollowersListPresenter.swift in Sources */,
 				77B708651F501EBD0096CE34 /* LoginLocalDS.swift in Sources */,
 				77B7085B1F501DE30096CE34 /* LoginRepository.swift in Sources */,
 				770DD25C1F4DC32A00F9AAB4 /* LoginViewController.swift in Sources */,
+				77B7087F1F502C070096CE34 /* FollowerDetailsUsecase.swift in Sources */,
+				77B7087D1F502BB80096CE34 /* FloolowersListUsecase.swift in Sources */,
 				77B708731F5020250096CE34 /* APIsConstantKeys.swift in Sources */,
 				77B708611F501E8D0096CE34 /* LoginDataSource.swift in Sources */,
 				77B708631F501EA20096CE34 /* LoginRemoteDS.swift in Sources */,
@@ -290,6 +345,7 @@
 				77B708711F501F420096CE34 /* FollowerDetailsLocalDS.swift in Sources */,
 				7797EABC1F4F6658005C9734 /* LoginContract.swift in Sources */,
 				77B708691F501EE60096CE34 /* FollowersListRemoteDS.swift in Sources */,
+				77B708791F502B510096CE34 /* Usecase.swift in Sources */,
 				7797EABE1F4F6667005C9734 /* LoginPresenter.swift in Sources */,
 				770DD25A1F4DC32A00F9AAB4 /* AppDelegate.swift in Sources */,
 				7797EAC61F4F68D2005C9734 /* FollowersDetailsPresenter.swift in Sources */,
