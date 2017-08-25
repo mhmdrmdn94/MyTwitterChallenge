@@ -7,4 +7,11 @@ target 'TwitterChallenge' do
 
   # Pods for TwitterChallenge
 
+	pod 'MBProgressHUD'
+  	pod 'WHRoundedImageView'
+  	pod 'Alamofire'
+   	pod 'SDWebImage'
+ 	pod 'TwitterKit'
+	pod 'DropDown'
+ 
 end
