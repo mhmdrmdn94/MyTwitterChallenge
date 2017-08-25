@@ -13,6 +13,26 @@
 		770DD2621F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770DD2601F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld */; };
 		770DD2641F4DC32A00F9AAB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770DD2631F4DC32A00F9AAB4 /* Assets.xcassets */; };
 		770DD2671F4DC32A00F9AAB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770DD2651F4DC32A00F9AAB4 /* LaunchScreen.storyboard */; };
+		7797EABC1F4F6658005C9734 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797EABB1F4F6658005C9734 /* LoginContract.swift */; };
+		7797EABE1F4F6667005C9734 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797EABD1F4F6667005C9734 /* LoginPresenter.swift */; };
+		7797EAC01F4F688A005C9734 /* FollowersListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797EABF1F4F688A005C9734 /* FollowersListContract.swift */; };
+		7797EAC21F4F689F005C9734 /* FollowersListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797EAC11F4F689F005C9734 /* FollowersListPresenter.swift */; };
+		7797EAC41F4F68BF005C9734 /* FollowersDetailsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797EAC31F4F68BF005C9734 /* FollowersDetailsContract.swift */; };
+		7797EAC61F4F68D2005C9734 /* FollowersDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797EAC51F4F68D2005C9734 /* FollowersDetailsPresenter.swift */; };
+		77B708591F501D9D0096CE34 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708581F501D9D0096CE34 /* Repository.swift */; };
+		77B7085B1F501DE30096CE34 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7085A1F501DE30096CE34 /* LoginRepository.swift */; };
+		77B7085D1F501E020096CE34 /* FollowersListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7085C1F501E020096CE34 /* FollowersListRepository.swift */; };
+		77B7085F1F501E4D0096CE34 /* FollowerDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7085E1F501E4D0096CE34 /* FollowerDetailsRepository.swift */; };
+		77B708611F501E8D0096CE34 /* LoginDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708601F501E8D0096CE34 /* LoginDataSource.swift */; };
+		77B708631F501EA20096CE34 /* LoginRemoteDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708621F501EA20096CE34 /* LoginRemoteDS.swift */; };
+		77B708651F501EBD0096CE34 /* LoginLocalDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708641F501EBD0096CE34 /* LoginLocalDS.swift */; };
+		77B708671F501ED40096CE34 /* FollowersListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708661F501ED40096CE34 /* FollowersListDataSource.swift */; };
+		77B708691F501EE60096CE34 /* FollowersListRemoteDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708681F501EE60096CE34 /* FollowersListRemoteDS.swift */; };
+		77B7086B1F501EFB0096CE34 /* FollowersListLocalDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7086A1F501EFB0096CE34 /* FollowersListLocalDS.swift */; };
+		77B7086D1F501F170096CE34 /* FollowerDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7086C1F501F170096CE34 /* FollowerDetailsDataSource.swift */; };
+		77B7086F1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7086E1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift */; };
+		77B708711F501F420096CE34 /* FollowerDetailsLocalDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708701F501F420096CE34 /* FollowerDetailsLocalDS.swift */; };
+		77B708731F5020250096CE34 /* APIsConstantKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708721F5020250096CE34 /* APIsConstantKeys.swift */; };
 		77C0E01A1F4E9A4400F95173 /* FollwersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */; };
 		77C0E01C1F4E9A6000F95173 /* FollowerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +46,26 @@
 		770DD2631F4DC32A00F9AAB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		770DD2661F4DC32A00F9AAB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		770DD2681F4DC32A00F9AAB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7797EABB1F4F6658005C9734 /* LoginContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginContract.swift; sourceTree = "<group>"; };
+		7797EABD1F4F6667005C9734 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		7797EABF1F4F688A005C9734 /* FollowersListContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListContract.swift; sourceTree = "<group>"; };
+		7797EAC11F4F689F005C9734 /* FollowersListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListPresenter.swift; sourceTree = "<group>"; };
+		7797EAC31F4F68BF005C9734 /* FollowersDetailsContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersDetailsContract.swift; sourceTree = "<group>"; };
+		7797EAC51F4F68D2005C9734 /* FollowersDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersDetailsPresenter.swift; sourceTree = "<group>"; };
+		77B708581F501D9D0096CE34 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		77B7085A1F501DE30096CE34 /* LoginRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		77B7085C1F501E020096CE34 /* FollowersListRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListRepository.swift; sourceTree = "<group>"; };
+		77B7085E1F501E4D0096CE34 /* FollowerDetailsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsRepository.swift; sourceTree = "<group>"; };
+		77B708601F501E8D0096CE34 /* LoginDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDataSource.swift; sourceTree = "<group>"; };
+		77B708621F501EA20096CE34 /* LoginRemoteDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginRemoteDS.swift; path = ../FollowersList/LoginRemoteDS.swift; sourceTree = "<group>"; };
+		77B708641F501EBD0096CE34 /* LoginLocalDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLocalDS.swift; sourceTree = "<group>"; };
+		77B708661F501ED40096CE34 /* FollowersListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListDataSource.swift; sourceTree = "<group>"; };
+		77B708681F501EE60096CE34 /* FollowersListRemoteDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListRemoteDS.swift; sourceTree = "<group>"; };
+		77B7086A1F501EFB0096CE34 /* FollowersListLocalDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListLocalDS.swift; sourceTree = "<group>"; };
+		77B7086C1F501F170096CE34 /* FollowerDetailsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsDataSource.swift; sourceTree = "<group>"; };
+		77B7086E1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsRemoteDS.swift; sourceTree = "<group>"; };
+		77B708701F501F420096CE34 /* FollowerDetailsLocalDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsLocalDS.swift; sourceTree = "<group>"; };
+		77B708721F5020250096CE34 /* APIsConstantKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsConstantKeys.swift; sourceTree = "<group>"; };
 		77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollwersTableViewController.swift; sourceTree = "<group>"; };
 		77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */,
+				7797EAC31F4F68BF005C9734 /* FollowersDetailsContract.swift */,
+				7797EAC51F4F68D2005C9734 /* FollowersDetailsPresenter.swift */,
 			);
 			path = FollowerDetails;
 			sourceTree = "<group>";
@@ -102,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */,
+				7797EABF1F4F688A005C9734 /* FollowersListContract.swift */,
+				7797EAC11F4F689F005C9734 /* FollowersListPresenter.swift */,
 			);
 			path = FollowersList;
 			sourceTree = "<group>";
@@ -110,6 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				770DD25B1F4DC32A00F9AAB4 /* LoginViewController.swift */,
+				7797EABB1F4F6658005C9734 /* LoginContract.swift */,
+				7797EABD1F4F6667005C9734 /* LoginPresenter.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -117,6 +163,8 @@
 		77C0E0151F4E999200F95173 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				77B708581F501D9D0096CE34 /* Repository.swift */,
+				77B708721F5020250096CE34 /* APIsConstantKeys.swift */,
 				77C0E0181F4E999200F95173 /* Login */,
 				77C0E0171F4E999200F95173 /* FollowersList */,
 				77C0E0161F4E999200F95173 /* FollowerDetails */,
@@ -127,6 +175,10 @@
 		77C0E0161F4E999200F95173 /* FollowerDetails */ = {
 			isa = PBXGroup;
 			children = (
+				77B7085E1F501E4D0096CE34 /* FollowerDetailsRepository.swift */,
+				77B7086C1F501F170096CE34 /* FollowerDetailsDataSource.swift */,
+				77B7086E1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift */,
+				77B708701F501F420096CE34 /* FollowerDetailsLocalDS.swift */,
 			);
 			path = FollowerDetails;
 			sourceTree = "<group>";
@@ -134,6 +186,10 @@
 		77C0E0171F4E999200F95173 /* FollowersList */ = {
 			isa = PBXGroup;
 			children = (
+				77B7085C1F501E020096CE34 /* FollowersListRepository.swift */,
+				77B708661F501ED40096CE34 /* FollowersListDataSource.swift */,
+				77B708681F501EE60096CE34 /* FollowersListRemoteDS.swift */,
+				77B7086A1F501EFB0096CE34 /* FollowersListLocalDS.swift */,
 			);
 			path = FollowersList;
 			sourceTree = "<group>";
@@ -141,6 +197,10 @@
 		77C0E0181F4E999200F95173 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				77B7085A1F501DE30096CE34 /* LoginRepository.swift */,
+				77B708601F501E8D0096CE34 /* LoginDataSource.swift */,
+				77B708621F501EA20096CE34 /* LoginRemoteDS.swift */,
+				77B708641F501EBD0096CE34 /* LoginLocalDS.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -217,11 +277,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77B7085F1F501E4D0096CE34 /* FollowerDetailsRepository.swift in Sources */,
+				77B708671F501ED40096CE34 /* FollowersListDataSource.swift in Sources */,
+				7797EAC21F4F689F005C9734 /* FollowersListPresenter.swift in Sources */,
+				77B708651F501EBD0096CE34 /* LoginLocalDS.swift in Sources */,
+				77B7085B1F501DE30096CE34 /* LoginRepository.swift in Sources */,
 				770DD25C1F4DC32A00F9AAB4 /* LoginViewController.swift in Sources */,
+				77B708731F5020250096CE34 /* APIsConstantKeys.swift in Sources */,
+				77B708611F501E8D0096CE34 /* LoginDataSource.swift in Sources */,
+				77B708631F501EA20096CE34 /* LoginRemoteDS.swift in Sources */,
+				7797EAC41F4F68BF005C9734 /* FollowersDetailsContract.swift in Sources */,
+				77B708711F501F420096CE34 /* FollowerDetailsLocalDS.swift in Sources */,
+				7797EABC1F4F6658005C9734 /* LoginContract.swift in Sources */,
+				77B708691F501EE60096CE34 /* FollowersListRemoteDS.swift in Sources */,
+				7797EABE1F4F6667005C9734 /* LoginPresenter.swift in Sources */,
 				770DD25A1F4DC32A00F9AAB4 /* AppDelegate.swift in Sources */,
+				7797EAC61F4F68D2005C9734 /* FollowersDetailsPresenter.swift in Sources */,
 				77C0E01C1F4E9A6000F95173 /* FollowerDetailsViewController.swift in Sources */,
+				77B7085D1F501E020096CE34 /* FollowersListRepository.swift in Sources */,
+				77B7086B1F501EFB0096CE34 /* FollowersListLocalDS.swift in Sources */,
+				7797EAC01F4F688A005C9734 /* FollowersListContract.swift in Sources */,
 				770DD2621F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld in Sources */,
+				77B7086D1F501F170096CE34 /* FollowerDetailsDataSource.swift in Sources */,
 				77C0E01A1F4E9A4400F95173 /* FollwersTableViewController.swift in Sources */,
+				77B7086F1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift in Sources */,
+				77B708591F501D9D0096CE34 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

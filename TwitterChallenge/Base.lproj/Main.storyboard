@@ -38,7 +38,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2b-84-fSy">
-                                        <rect key="frame" x="20" y="40.333333333333314" width="314" height="50"/>
+                                        <rect key="frame" x="0.0" y="40.333333333333314" width="354" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="W7M-jm-f1A"/>
@@ -62,10 +62,10 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="C2b-84-fSy" firstAttribute="leading" secondItem="xuN-tl-zsz" secondAttribute="leading" constant="20" id="47D-DP-afY"/>
+                                    <constraint firstAttribute="trailing" secondItem="C2b-84-fSy" secondAttribute="trailing" id="9Pd-rd-VgE"/>
                                     <constraint firstAttribute="trailing" secondItem="weD-sE-u3x" secondAttribute="trailing" id="M80-OM-xpN"/>
+                                    <constraint firstItem="C2b-84-fSy" firstAttribute="leading" secondItem="xuN-tl-zsz" secondAttribute="leading" id="gyU-Fu-r90"/>
                                     <constraint firstItem="weD-sE-u3x" firstAttribute="leading" secondItem="xuN-tl-zsz" secondAttribute="leading" id="hBj-fT-frD"/>
-                                    <constraint firstAttribute="trailing" secondItem="C2b-84-fSy" secondAttribute="trailing" constant="20" id="rIE-7M-dEQ"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-R0-k1c">
@@ -145,7 +145,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fdP-QA-ry1">
-                                            <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
+                                            <rect key="frame" x="20" y="0.0" width="379" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
