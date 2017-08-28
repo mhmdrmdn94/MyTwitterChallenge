@@ -37,13 +37,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2b-84-fSy">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRB-It-73z">
                                         <rect key="frame" x="0.0" y="40.333333333333314" width="354" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="W7M-jm-f1A"/>
+                                            <constraint firstAttribute="height" constant="50" id="WGf-Mg-3QF"/>
                                         </constraints>
-                                        <state key="normal" title="DropDown()"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="No Recent Logs!">
+                                            <color key="titleColor" red="1" green="0.21243221970000001" blue="0.2523562728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dropDownBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rdF-rc-prg"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXa-IR-G7T">
                                         <rect key="frame" x="102" y="110.33333333333334" width="150" height="40"/>
@@ -57,15 +63,15 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="2qK-Lx-L2Z" kind="show" id="8H6-yj-0Hi"/>
+                                            <action selector="loginBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TPZ-WA-by7"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="C2b-84-fSy" secondAttribute="trailing" id="9Pd-rd-VgE"/>
                                     <constraint firstAttribute="trailing" secondItem="weD-sE-u3x" secondAttribute="trailing" id="M80-OM-xpN"/>
-                                    <constraint firstItem="C2b-84-fSy" firstAttribute="leading" secondItem="xuN-tl-zsz" secondAttribute="leading" id="gyU-Fu-r90"/>
+                                    <constraint firstItem="FRB-It-73z" firstAttribute="leading" secondItem="xuN-tl-zsz" secondAttribute="leading" id="WB0-Rg-luv"/>
                                     <constraint firstItem="weD-sE-u3x" firstAttribute="leading" secondItem="xuN-tl-zsz" secondAttribute="leading" id="hBj-fT-frD"/>
+                                    <constraint firstAttribute="trailing" secondItem="FRB-It-73z" secondAttribute="trailing" id="x88-jj-PZN"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-R0-k1c">
@@ -88,21 +94,7 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njy-bQ-0i3">
                                 <rect key="frame" x="0.0" y="412.66666666666674" width="414" height="323.33333333333326"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewi-SU-pw1">
-                                        <rect key="frame" x="50" y="141.99999999999994" width="314" height="40"/>
-                                        <color key="backgroundColor" red="0.22223887849999999" green="0.62202697350000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="fgd-uh-G5w"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ewi-SU-pw1" secondAttribute="trailing" constant="50" id="Cht-6k-aqO"/>
-                                    <constraint firstItem="ewi-SU-pw1" firstAttribute="leading" secondItem="njy-bQ-0i3" secondAttribute="leading" constant="50" id="KG0-Pn-TeY"/>
-                                    <constraint firstItem="ewi-SU-pw1" firstAttribute="centerY" secondItem="njy-bQ-0i3" secondAttribute="centerY" id="fAk-7R-lvO"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -123,6 +115,11 @@
                             <constraint firstItem="gPS-DW-7bX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="smw-pe-lJA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dropDownBtn" destination="FRB-It-73z" id="wg2-6N-2KA"/>
+                        <outlet property="loginBtn" destination="mXa-IR-G7T" id="pkd-93-OCs"/>
+                        <outlet property="lowerVeiw" destination="njy-bQ-0i3" id="M8m-U3-DvY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,7 +142,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fdP-QA-ry1">
-                                            <rect key="frame" x="20" y="0.0" width="379" height="43.666666666666664"/>
+                                            <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>

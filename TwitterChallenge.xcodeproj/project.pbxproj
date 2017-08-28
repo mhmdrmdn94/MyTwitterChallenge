@@ -39,7 +39,7 @@
 		77B7086D1F501F170096CE34 /* FollowerDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7086C1F501F170096CE34 /* FollowerDetailsDataSource.swift */; };
 		77B7086F1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7086E1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift */; };
 		77B708711F501F420096CE34 /* FollowerDetailsLocalDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708701F501F420096CE34 /* FollowerDetailsLocalDS.swift */; };
-		77B708731F5020250096CE34 /* APIsConstantKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708721F5020250096CE34 /* APIsConstantKeys.swift */; };
+		77B708731F5020250096CE34 /* APIsDataConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708721F5020250096CE34 /* APIsDataConstant.swift */; };
 		77B708791F502B510096CE34 /* Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708781F502B510096CE34 /* Usecase.swift */; };
 		77B7087B1F502B970096CE34 /* LoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087A1F502B970096CE34 /* LoginUsecase.swift */; };
 		77B7087D1F502BB80096CE34 /* FloolowersListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087C1F502BB80096CE34 /* FloolowersListUsecase.swift */; };
@@ -47,6 +47,8 @@
 		77B708811F502C2A0096CE34 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708801F502C2A0096CE34 /* BasePresenter.swift */; };
 		77C0E01A1F4E9A4400F95173 /* FollwersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */; };
 		77C0E01C1F4E9A6000F95173 /* FollowerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */; };
+		77DD388A1F53380000B23A1B /* APIsUrlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DD38891F53380000B23A1B /* APIsUrlConstants.swift */; };
+		77DD388C1F5339BF00B23A1B /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DD388B1F5339BF00B23A1B /* SafariServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,7 +87,7 @@
 		77B7086C1F501F170096CE34 /* FollowerDetailsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsDataSource.swift; sourceTree = "<group>"; };
 		77B7086E1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsRemoteDS.swift; sourceTree = "<group>"; };
 		77B708701F501F420096CE34 /* FollowerDetailsLocalDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsLocalDS.swift; sourceTree = "<group>"; };
-		77B708721F5020250096CE34 /* APIsConstantKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsConstantKeys.swift; sourceTree = "<group>"; };
+		77B708721F5020250096CE34 /* APIsDataConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsDataConstant.swift; sourceTree = "<group>"; };
 		77B708781F502B510096CE34 /* Usecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usecase.swift; sourceTree = "<group>"; };
 		77B7087A1F502B970096CE34 /* LoginUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUsecase.swift; sourceTree = "<group>"; };
 		77B7087C1F502BB80096CE34 /* FloolowersListUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloolowersListUsecase.swift; sourceTree = "<group>"; };
@@ -93,6 +95,8 @@
 		77B708801F502C2A0096CE34 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollwersTableViewController.swift; sourceTree = "<group>"; };
 		77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsViewController.swift; sourceTree = "<group>"; };
+		77DD38891F53380000B23A1B /* APIsUrlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsUrlConstants.swift; sourceTree = "<group>"; };
+		77DD388B1F5339BF00B23A1B /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		EB751180A810E88D14657880 /* Pods-TwitterChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterChallenge/Pods-TwitterChallenge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77DD388C1F5339BF00B23A1B /* SafariServices.framework in Frameworks */,
 				779B9AB61F5040D000926F2F /* Alamofire.framework in Frameworks */,
 				779B9AB71F5040D000926F2F /* DropDown.framework in Frameworks */,
 				779B9AB81F5040D000926F2F /* MBProgressHUD.framework in Frameworks */,
@@ -116,6 +121,7 @@
 		769D6B0A6DE8DE7CE051FFFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77DD388B1F5339BF00B23A1B /* SafariServices.framework */,
 				779B9AB11F5040D000926F2F /* Alamofire.framework */,
 				779B9AB21F5040D000926F2F /* DropDown.framework */,
 				779B9AB31F5040D000926F2F /* MBProgressHUD.framework */,
@@ -249,7 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				77B708581F501D9D0096CE34 /* Repository.swift */,
-				77B708721F5020250096CE34 /* APIsConstantKeys.swift */,
+				77DD38891F53380000B23A1B /* APIsUrlConstants.swift */,
+				77B708721F5020250096CE34 /* APIsDataConstant.swift */,
 				77C0E0181F4E999200F95173 /* Login */,
 				77C0E0171F4E999200F95173 /* FollowersList */,
 				77C0E0161F4E999200F95173 /* FollowerDetails */,
@@ -451,9 +458,10 @@
 				770DD25C1F4DC32A00F9AAB4 /* LoginViewController.swift in Sources */,
 				77B7087F1F502C070096CE34 /* FollowerDetailsUsecase.swift in Sources */,
 				77B7087D1F502BB80096CE34 /* FloolowersListUsecase.swift in Sources */,
-				77B708731F5020250096CE34 /* APIsConstantKeys.swift in Sources */,
+				77B708731F5020250096CE34 /* APIsDataConstant.swift in Sources */,
 				77B708611F501E8D0096CE34 /* LoginDataSource.swift in Sources */,
 				77B708631F501EA20096CE34 /* LoginRemoteDS.swift in Sources */,
+				77DD388A1F53380000B23A1B /* APIsUrlConstants.swift in Sources */,
 				7797EAC41F4F68BF005C9734 /* FollowersDetailsContract.swift in Sources */,
 				77B708711F501F420096CE34 /* FollowerDetailsLocalDS.swift in Sources */,
 				7797EABC1F4F6658005C9734 /* LoginContract.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        // Initializing the TwitterKit
+        Twitter.sharedInstance().start(withConsumerKey: ConstantUrls.consumerKey, consumerSecret: ConstantUrls.consumerSecret)
+
+        
         return true
     }
 
@@ -90,4 +97,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
+//// This EXTENSION is to implement methods related to TwitterAPIs
+
+extension AppDelegate{
+
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+      
+        /////// Here, New user has been successflly AUTHENTICATED :)
+        
+        /// 1. add him to NSUserDefaults to map between ["Username", "UserId"]
+        
+        
+            ///a. get the actual LOGGED_INs from UserDefaults if exists.
+            ///b. update the LOGGED_INs dictionary
+        
+        
+            var loggedDictionary : [String:String] = [:]
+            let store = Twitter.sharedInstance().sessionStore
+            let sessions = store.existingUserSessions()
+        
+            for session in sessions{
+        
+                let sessionObj = session as! TWTRSession
+                loggedDictionary[sessionObj.userID] = sessionObj.userName
+        
+                print("Session Contains ... \(sessionObj.userName)")
+                
+            }
+        
+            UserDefaults.standard.set(loggedDictionary, forKey: "LOGGED_INs")
+        
+        
+        
+        /// 2. change the fromSafari flag to TRUE to skip the login screen
+        LoginViewController.fromSafari = true
+        
+        
+        
+        return Twitter.sharedInstance().application(app, open: url, options: options)
+    }
+
+
+
+}
+
+
 
