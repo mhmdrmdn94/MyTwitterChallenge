@@ -13,5 +13,6 @@ target 'TwitterChallenge' do
    	pod 'SDWebImage'
  	pod 'TwitterKit'
 	pod 'DropDown'
+	pod 'SwiftyJSON'
  
 end

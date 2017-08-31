@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+protocol FollowersViewProtocol {
+    
+    func showProgressBar();
+    func hideProgressBar();
+    func showErrorMsg(errorMsg : String);
+    func updateFollowersList(followers: [Follower] );
+    
+}
+
+
+protocol FollowersPresenterProtocol {
+    
+    func getFollowers(userid: String);
+    
+}

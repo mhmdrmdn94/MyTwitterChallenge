@@ -62,13 +62,6 @@ class LoginViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = true
         
         
-        if usersDropDown_dataSource.isEmpty{
-            dropDownBtn.titleLabel?.textColor = UIColor.red
-        }else{
-            dropDownBtn.titleLabel?.textColor = UIColor.blue
-        }
-        
-        
         
         usersDropDown_dataSource = []
         LoginViewController.selectedUser = ("", "")
@@ -93,13 +86,11 @@ class LoginViewController: BaseViewController {
                 LoginViewController.selectedUser = ("", "")
                 loginBtn.isEnabled = false
                 dropDownBtn.setTitle("Tap to select", for: .normal)
-                dropDownBtn.titleLabel?.textColor = UIColor.blue
           
             }else{
                 //// All are loggedOUT
                 /// No recent logs
                 dropDownBtn.setTitle("No Recent Logs!", for: .normal)
-                dropDownBtn.titleLabel?.textColor = UIColor.red
                 LoginViewController.selectedUser = ("", "")
                 loginBtn.isEnabled = false
                 
@@ -108,7 +99,6 @@ class LoginViewController: BaseViewController {
         }else{
             //// No recent logs
             dropDownBtn.setTitle("No Recent Logs!", for: .normal)
-            dropDownBtn.titleLabel?.textColor = UIColor.red
             LoginViewController.selectedUser = ("", "")
             loginBtn.isEnabled = false
             
@@ -117,6 +107,13 @@ class LoginViewController: BaseViewController {
         
         usersDropDown.dataSource = usersDropDown_dataSource
       
+        if usersDropDown_dataSource.isEmpty{
+            dropDownBtn.setTitleColor(UIColor.red, for: .normal)
+        }else{
+            dropDownBtn.setTitleColor(UIColor.blue, for: .normal)
+        }
+
+        
         // Action triggered on menu item selection
         usersDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             

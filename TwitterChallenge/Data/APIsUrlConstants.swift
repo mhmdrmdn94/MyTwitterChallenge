@@ -13,10 +13,17 @@ struct ConstantUrls {
     
     static let consumerKey = "xf29D7ZLIAcfB9NUkfzvlBGbt"
     static let consumerSecret = "zXbeXSQmB9zQ4mTDpzYYgjQLVvMGwpX8McdkbL93vaAH4f7lba"
+    static let unEncodedToken = "xf29D7ZLIAcfB9NUkfzvlBGbt:zXbeXSQmB9zQ4mTDpzYYgjQLVvMGwpX8McdkbL93vaAH4f7lba"
+    static let bearerToken = ""
+    
+    
     static let loggedinsKey = "LOGGED_INs"
     
-    static let baseURL = ""
-    static let followersURL = ""
-    static let tweetsURL = ""
+    
+    static let baseURL = "https://api.twitter.com"
+    static let bearerURL = "/oauth2/token"
+    static let followersURL = "/1.1/followers/list.json?user_id="
+    static let tweetsURL = "/1.1/statuses/user_timeline.json?user_id="
+    
     
 }

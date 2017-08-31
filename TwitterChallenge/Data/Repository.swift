@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol RepositoryProtocol {
+    
+    func getData(requestValues: RequestValues,onSuccess_usecase:@escaping(Any) -> Void, onFailure_usecase:@escaping (String) -> Void);
+    
+    
+}
+

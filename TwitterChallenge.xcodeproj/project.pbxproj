@@ -42,11 +42,17 @@
 		77B708731F5020250096CE34 /* APIsDataConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708721F5020250096CE34 /* APIsDataConstant.swift */; };
 		77B708791F502B510096CE34 /* Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708781F502B510096CE34 /* Usecase.swift */; };
 		77B7087B1F502B970096CE34 /* LoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087A1F502B970096CE34 /* LoginUsecase.swift */; };
-		77B7087D1F502BB80096CE34 /* FloolowersListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087C1F502BB80096CE34 /* FloolowersListUsecase.swift */; };
+		77B7087D1F502BB80096CE34 /* FollowersListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087C1F502BB80096CE34 /* FollowersListUsecase.swift */; };
 		77B7087F1F502C070096CE34 /* FollowerDetailsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087E1F502C070096CE34 /* FollowerDetailsUsecase.swift */; };
 		77B708811F502C2A0096CE34 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708801F502C2A0096CE34 /* BasePresenter.swift */; };
 		77C0E01A1F4E9A4400F95173 /* FollwersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */; };
 		77C0E01C1F4E9A6000F95173 /* FollowerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */; };
+		77DC48421F581772002E51E8 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC48411F581772002E51E8 /* Followers.swift */; };
+		77DC48441F5817A4002E51E8 /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC48431F5817A4002E51E8 /* Tweets.swift */; };
+		77DC48461F581AC9002E51E8 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC48451F581AC9002E51E8 /* BaseTableViewController.swift */; };
+		77DC48491F581DA0002E51E8 /* BackendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC48481F581DA0002E51E8 /* BackendAPI.swift */; };
+		77DC484B1F581DFF002E51E8 /* AlamofireAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC484A1F581DFF002E51E8 /* AlamofireAPI.swift */; };
+		77DC484D1F582265002E51E8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC484C1F582265002E51E8 /* SwiftyJSON.framework */; };
 		77DD388A1F53380000B23A1B /* APIsUrlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DD38891F53380000B23A1B /* APIsUrlConstants.swift */; };
 		77DD388C1F5339BF00B23A1B /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DD388B1F5339BF00B23A1B /* SafariServices.framework */; };
 /* End PBXBuildFile section */
@@ -90,11 +96,17 @@
 		77B708721F5020250096CE34 /* APIsDataConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsDataConstant.swift; sourceTree = "<group>"; };
 		77B708781F502B510096CE34 /* Usecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usecase.swift; sourceTree = "<group>"; };
 		77B7087A1F502B970096CE34 /* LoginUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUsecase.swift; sourceTree = "<group>"; };
-		77B7087C1F502BB80096CE34 /* FloolowersListUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloolowersListUsecase.swift; sourceTree = "<group>"; };
+		77B7087C1F502BB80096CE34 /* FollowersListUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListUsecase.swift; sourceTree = "<group>"; };
 		77B7087E1F502C070096CE34 /* FollowerDetailsUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsUsecase.swift; sourceTree = "<group>"; };
 		77B708801F502C2A0096CE34 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollwersTableViewController.swift; sourceTree = "<group>"; };
 		77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsViewController.swift; sourceTree = "<group>"; };
+		77DC48411F581772002E51E8 /* Followers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
+		77DC48431F5817A4002E51E8 /* Tweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
+		77DC48451F581AC9002E51E8 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		77DC48481F581DA0002E51E8 /* BackendAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendAPI.swift; sourceTree = "<group>"; };
+		77DC484A1F581DFF002E51E8 /* AlamofireAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPI.swift; sourceTree = "<group>"; };
+		77DC484C1F582265002E51E8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		77DD38891F53380000B23A1B /* APIsUrlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsUrlConstants.swift; sourceTree = "<group>"; };
 		77DD388B1F5339BF00B23A1B /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		EB751180A810E88D14657880 /* Pods-TwitterChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterChallenge/Pods-TwitterChallenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77DC484D1F582265002E51E8 /* SwiftyJSON.framework in Frameworks */,
 				77DD388C1F5339BF00B23A1B /* SafariServices.framework in Frameworks */,
 				779B9AB61F5040D000926F2F /* Alamofire.framework in Frameworks */,
 				779B9AB71F5040D000926F2F /* DropDown.framework in Frameworks */,
@@ -121,6 +134,7 @@
 		769D6B0A6DE8DE7CE051FFFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77DC484C1F582265002E51E8 /* SwiftyJSON.framework */,
 				77DD388B1F5339BF00B23A1B /* SafariServices.framework */,
 				779B9AB11F5040D000926F2F /* Alamofire.framework */,
 				779B9AB21F5040D000926F2F /* DropDown.framework */,
@@ -156,6 +170,7 @@
 				770DD25D1F4DC32A00F9AAB4 /* Main.storyboard */,
 				77B708801F502C2A0096CE34 /* BasePresenter.swift */,
 				779B9AAF1F50406B00926F2F /* BaseViewController.swift */,
+				77DC48451F581AC9002E51E8 /* BaseTableViewController.swift */,
 				77C0E0111F4E98E400F95173 /* Presentation */,
 				77B708741F502B2A0096CE34 /* Business */,
 				77C0E0151F4E999200F95173 /* Data */,
@@ -198,7 +213,7 @@
 		77B708761F502B2A0096CE34 /* FollowersList */ = {
 			isa = PBXGroup;
 			children = (
-				77B7087C1F502BB80096CE34 /* FloolowersListUsecase.swift */,
+				77B7087C1F502BB80096CE34 /* FollowersListUsecase.swift */,
 			);
 			path = FollowersList;
 			sourceTree = "<group>";
@@ -254,9 +269,11 @@
 		77C0E0151F4E999200F95173 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				77B708581F501D9D0096CE34 /* Repository.swift */,
 				77DD38891F53380000B23A1B /* APIsUrlConstants.swift */,
 				77B708721F5020250096CE34 /* APIsDataConstant.swift */,
+				77B708581F501D9D0096CE34 /* Repository.swift */,
+				77DC48401F58175C002E51E8 /* Models */,
+				77DC48471F581D6B002E51E8 /* Backend Integration */,
 				77C0E0181F4E999200F95173 /* Login */,
 				77C0E0171F4E999200F95173 /* FollowersList */,
 				77C0E0161F4E999200F95173 /* FollowerDetails */,
@@ -295,6 +312,24 @@
 				77B708641F501EBD0096CE34 /* LoginLocalDS.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		77DC48401F58175C002E51E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				77DC48411F581772002E51E8 /* Followers.swift */,
+				77DC48431F5817A4002E51E8 /* Tweets.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		77DC48471F581D6B002E51E8 /* Backend Integration */ = {
+			isa = PBXGroup;
+			children = (
+				77DC48481F581DA0002E51E8 /* BackendAPI.swift */,
+				77DC484A1F581DFF002E51E8 /* AlamofireAPI.swift */,
+			);
+			path = "Backend Integration";
 			sourceTree = "<group>";
 		};
 		DF7B1274D2F1915C8E10F3F4 /* Pods */ = {
@@ -388,6 +423,7 @@
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/WHRoundedImageView/WHRoundedImageView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -396,6 +432,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WHRoundedImageView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77DC48421F581772002E51E8 /* Followers.swift in Sources */,
 				77B7085F1F501E4D0096CE34 /* FollowerDetailsRepository.swift in Sources */,
 				77B708811F502C2A0096CE34 /* BasePresenter.swift in Sources */,
 				77B7087B1F502B970096CE34 /* LoginUsecase.swift in Sources */,
@@ -454,15 +492,18 @@
 				779B9AB01F50406B00926F2F /* BaseViewController.swift in Sources */,
 				7797EAC21F4F689F005C9734 /* FollowersListPresenter.swift in Sources */,
 				77B708651F501EBD0096CE34 /* LoginLocalDS.swift in Sources */,
+				77DC484B1F581DFF002E51E8 /* AlamofireAPI.swift in Sources */,
 				77B7085B1F501DE30096CE34 /* LoginRepository.swift in Sources */,
 				770DD25C1F4DC32A00F9AAB4 /* LoginViewController.swift in Sources */,
 				77B7087F1F502C070096CE34 /* FollowerDetailsUsecase.swift in Sources */,
-				77B7087D1F502BB80096CE34 /* FloolowersListUsecase.swift in Sources */,
+				77B7087D1F502BB80096CE34 /* FollowersListUsecase.swift in Sources */,
 				77B708731F5020250096CE34 /* APIsDataConstant.swift in Sources */,
 				77B708611F501E8D0096CE34 /* LoginDataSource.swift in Sources */,
 				77B708631F501EA20096CE34 /* LoginRemoteDS.swift in Sources */,
 				77DD388A1F53380000B23A1B /* APIsUrlConstants.swift in Sources */,
 				7797EAC41F4F68BF005C9734 /* FollowersDetailsContract.swift in Sources */,
+				77DC48491F581DA0002E51E8 /* BackendAPI.swift in Sources */,
+				77DC48461F581AC9002E51E8 /* BaseTableViewController.swift in Sources */,
 				77B708711F501F420096CE34 /* FollowerDetailsLocalDS.swift in Sources */,
 				7797EABC1F4F6658005C9734 /* LoginContract.swift in Sources */,
 				77B708691F501EE60096CE34 /* FollowersListRemoteDS.swift in Sources */,
@@ -473,6 +514,7 @@
 				77C0E01C1F4E9A6000F95173 /* FollowerDetailsViewController.swift in Sources */,
 				77B7085D1F501E020096CE34 /* FollowersListRepository.swift in Sources */,
 				77B7086B1F501EFB0096CE34 /* FollowersListLocalDS.swift in Sources */,
+				77DC48441F5817A4002E51E8 /* Tweets.swift in Sources */,
 				7797EAC01F4F688A005C9734 /* FollowersListContract.swift in Sources */,
 				770DD2621F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld in Sources */,
 				77B7086D1F501F170096CE34 /* FollowerDetailsDataSource.swift in Sources */,
@@ -605,6 +647,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 47FPRZ54TM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SwiftyJSON",
+				);
 				INFOPLIST_FILE = TwitterChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mramadan.TwitterChallenge;
@@ -619,6 +665,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 47FPRZ54TM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SwiftyJSON",
+				);
 				INFOPLIST_FILE = TwitterChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mramadan.TwitterChallenge;

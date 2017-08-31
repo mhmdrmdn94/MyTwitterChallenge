@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+
+protocol UsecaseProtocol {
+    
+    func executeUseCase(requestValues: RequestValues,onSuccess_preseneter:@escaping(Any) -> Void, onFailure_presenter:@escaping (String) -> Void);
+    
+    
+}
+
+
+
+
+protocol RequestValues {
+    
+}

@@ -8,12 +8,22 @@
 
 import UIKit
 import TwitterKit
+import  MBProgressHUD
 
-class FollwersTableViewController: UITableViewController {
+class FollwersTableViewController: BaseTableViewController {
 
     
     var loggedUserData : (username: String, userid: String)?
+    var presenter : FollowersPresenterProtocol?
+    var progressBar : MBProgressHUD?
     
+    var followers : [Follower] = []{
+    
+        didSet{
+            self.tableView.reloadData()
+        }
+    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +39,8 @@ class FollwersTableViewController: UITableViewController {
         
         self.navigationItem.title = "Your Followers"
         
+        self.presenter = FollowersPresenter(view: self)
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,28 +49,29 @@ class FollwersTableViewController: UITableViewController {
         self.navigationItem.hidesBackButton = true
         
         
-        
-        
         if let logged = loggedUserData{
         
             print("FollowersVC >>> currentID=\(logged)")
             
+            self.presenter?.getFollowers(userid: (loggedUserData?.userid)!)
         }
         
+        let dummy = Follower(); dummy.followerID = "1234567"
         
+        followers.append(dummy)
         
     }
     
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 20
+        
+        return followers.count
     }
 
     
@@ -67,72 +80,25 @@ class FollwersTableViewController: UITableViewController {
 
         // Configure the cell...
 
-        cell.textLabel?.text = "I'm the \"\( indexPath.row )\" Follower :)."
+        cell.textLabel?.text = followers[indexPath.row].followerID!
         
         
         return cell
     }
     
+    
       override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "detailsVC") as! FollowerDetailsViewController
+        //let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "detailsVC") as! FollowerDetailsViewController
         
-        self.navigationController?.pushViewController(detailsVC, animated: true)
+        //self.navigationController?.pushViewController(detailsVC, animated: true)
         
         
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    
     
     //MARK:- Logout button is tapped
-    
-    
     
     @IBAction func logoutIsTapped(_ sender: UIBarButtonItem) {
         
@@ -150,3 +116,48 @@ class FollwersTableViewController: UITableViewController {
     
     
 }
+
+
+//MARK:- Extension for ViewProtocol
+extension FollwersTableViewController : FollowersViewProtocol{
+
+    func showProgressBar(){
+    
+        print("VC:: Viewing progress bar ...")
+        
+        //1. Network Indicator
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        //2. ProgressBar
+        progressBar = showMBProgressBar(view: self.view, title: "Loading")
+        progressBar?.show(animated: true)
+        
+    }
+    
+    func hideProgressBar(){
+    
+        print("VC:: Hiding progress bar ...")
+        
+        //1. Network Indicator
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        //2. ProgressBar
+        progressBar?.hide(animated: true)
+    
+    }
+    
+    func showErrorMsg(errorMsg : String){
+    
+        showAlert(message: "Error!", title: errorMsg)
+        
+    }
+    
+    func updateFollowersList(followers: [Follower] ){
+    
+    
+    }
+
+
+}
+
+

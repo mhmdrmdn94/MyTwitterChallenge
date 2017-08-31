@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+protocol FollowersDataSource {
+    
+    
+    func getFollowers(requestValues: FollowersRequestValues,  onSuccess_repo:@escaping([Follower]) -> Void, onFailure_repo:@escaping (String) -> Void);
+    
+}
