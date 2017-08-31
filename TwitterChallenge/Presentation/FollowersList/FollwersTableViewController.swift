@@ -21,6 +21,7 @@ class FollwersTableViewController: BaseTableViewController {
     
         didSet{
             self.tableView.reloadData()
+            print("FollowersList has been updated ... :)")
         }
     
     }
@@ -152,8 +153,9 @@ extension FollwersTableViewController : FollowersViewProtocol{
         
     }
     
-    func updateFollowersList(followers: [Follower] ){
+    func updateFollowersList(newFollowers: [Follower] ){
     
+        followers = newFollowers
     
     }
 

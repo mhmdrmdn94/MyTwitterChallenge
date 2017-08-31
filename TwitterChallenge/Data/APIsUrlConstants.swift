@@ -14,7 +14,10 @@ struct ConstantUrls {
     static let consumerKey = "xf29D7ZLIAcfB9NUkfzvlBGbt"
     static let consumerSecret = "zXbeXSQmB9zQ4mTDpzYYgjQLVvMGwpX8McdkbL93vaAH4f7lba"
     static let unEncodedToken = "xf29D7ZLIAcfB9NUkfzvlBGbt:zXbeXSQmB9zQ4mTDpzYYgjQLVvMGwpX8McdkbL93vaAH4f7lba"
-    static let bearerToken = ""
+    
+    static let encodedToken = ConstantUrls.unEncodedToken.toBase64()
+    
+    static var bearerToken = ""
     
     
     static let loggedinsKey = "LOGGED_INs"

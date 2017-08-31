@@ -35,7 +35,7 @@ struct AlamofireAPI: BackendAPI {
                 
                 
                 let json = JSON(response.result.value!)
-                print("JSON: \(json)")
+                print(">>> JSON: \(json)")
                 
                 onSuccess(json)
                 
@@ -56,10 +56,11 @@ struct AlamofireAPI: BackendAPI {
 
     func executePostRequest(url:String,parameters: [String:Any]?,header : [String:String]?,onSuccess:@escaping (Any) -> Void, onFailure:@escaping (Error) -> Void){
     
-        
+        print(" - - - - - - - - ")
         
         
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header ).responseJSON { (response:DataResponse<Any>) in
+            
             
             switch(response.result) {
                 
@@ -67,7 +68,7 @@ struct AlamofireAPI: BackendAPI {
                 
                 
                 let json = JSON(response.result.value!)
-                print("JSON: \(json)")
+                print(">>> JSON: \(json)")
                 
                 onSuccess(json)
                 

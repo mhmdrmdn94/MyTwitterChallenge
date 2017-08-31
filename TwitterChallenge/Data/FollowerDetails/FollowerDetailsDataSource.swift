@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+protocol TweetsDataSource {
+    
+    
+    func getTweets(requestValues: TweetsRequestValues,  onSuccess_repo:@escaping([Tweet]) -> Void, onFailure_repo:@escaping (String) -> Void);
+    
+}

@@ -13,14 +13,13 @@ protocol LoginViewProtocol {
     func showProgressBar();
     func hideProgressBar();
     func showErrorMsg(errorMsg : String);
+    func updateBearerTokenValue(bearer: String);
     
 }
 
 
 protocol LoginPresenterProtocol {
     
-    func loginWithNewAccount(username: String, userid: String); /// Do not forget to store them in NSUserDefaults as this is the FIRST-TIME-LOGIN for this account
-    
-    func loginWithExistingAccount(userid: String);
+    func getBearerToken(encodedKeys: String);
     
 }

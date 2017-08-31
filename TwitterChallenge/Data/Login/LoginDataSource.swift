@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+
+protocol LoginDataSource {
+    
+    
+    func getBearerToken(requestValues: LoginRequestVlaues,  onSuccess_repo:@escaping(String) -> Void, onFailure_repo:@escaping (String) -> Void);
+    
+}

@@ -53,6 +53,7 @@
 		77DC48491F581DA0002E51E8 /* BackendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC48481F581DA0002E51E8 /* BackendAPI.swift */; };
 		77DC484B1F581DFF002E51E8 /* AlamofireAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC484A1F581DFF002E51E8 /* AlamofireAPI.swift */; };
 		77DC484D1F582265002E51E8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC484C1F582265002E51E8 /* SwiftyJSON.framework */; };
+		77DC484F1F58336C002E51E8 /* BaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC484E1F58336C002E51E8 /* BaseExtensions.swift */; };
 		77DD388A1F53380000B23A1B /* APIsUrlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DD38891F53380000B23A1B /* APIsUrlConstants.swift */; };
 		77DD388C1F5339BF00B23A1B /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DD388B1F5339BF00B23A1B /* SafariServices.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		77DC48481F581DA0002E51E8 /* BackendAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendAPI.swift; sourceTree = "<group>"; };
 		77DC484A1F581DFF002E51E8 /* AlamofireAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPI.swift; sourceTree = "<group>"; };
 		77DC484C1F582265002E51E8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		77DC484E1F58336C002E51E8 /* BaseExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseExtensions.swift; sourceTree = "<group>"; };
 		77DD38891F53380000B23A1B /* APIsUrlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsUrlConstants.swift; sourceTree = "<group>"; };
 		77DD388B1F5339BF00B23A1B /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		EB751180A810E88D14657880 /* Pods-TwitterChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterChallenge/Pods-TwitterChallenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				770DD25D1F4DC32A00F9AAB4 /* Main.storyboard */,
+				77DC484E1F58336C002E51E8 /* BaseExtensions.swift */,
 				77B708801F502C2A0096CE34 /* BasePresenter.swift */,
 				779B9AAF1F50406B00926F2F /* BaseViewController.swift */,
 				77DC48451F581AC9002E51E8 /* BaseTableViewController.swift */,
@@ -494,6 +497,7 @@
 				77B708651F501EBD0096CE34 /* LoginLocalDS.swift in Sources */,
 				77DC484B1F581DFF002E51E8 /* AlamofireAPI.swift in Sources */,
 				77B7085B1F501DE30096CE34 /* LoginRepository.swift in Sources */,
+				77DC484F1F58336C002E51E8 /* BaseExtensions.swift in Sources */,
 				770DD25C1F4DC32A00F9AAB4 /* LoginViewController.swift in Sources */,
 				77B7087F1F502C070096CE34 /* FollowerDetailsUsecase.swift in Sources */,
 				77B7087D1F502BB80096CE34 /* FollowersListUsecase.swift in Sources */,

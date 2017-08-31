@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+
+protocol TweetsViewProtocol {
+    
+    func showProgressBar();
+    func hideProgressBar();
+    func showErrorMsg(errorMsg : String);
+    func updateTweetsList(newTweets: [Tweet] );
+    
+}
+
+
+protocol TweetsPresenterProtocol {
+    
+    func getTweets(userid: String);
+    
+}

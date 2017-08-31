@@ -7,11 +7,29 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class FollowerDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var tweetsTableView: UITableView!
     
+    @IBOutlet weak var tweetsTableView: UITableView!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var usenameLabel: UILabel!
+    
+    
+    
+    var progressBar : MBProgressHUD?
+    var presenter : TweetsPresenterProtocol?
+    var selectedFollower : Follower?
+    var tweets : [Tweet] = []{
+    
+        didSet{
+            self.tweetsTableView.reloadData()
+            print("Tweets TableView is updated ...")
+        }
+    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +37,26 @@ class FollowerDetailsViewController: UIViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view.
         
         print("FollowerDetails screen is loaded...")
+        
+        self.presenter = TweetsPresenter(view: self)
+        
+        
+        
+        //Testing block
+        var tweetDummy = Tweet(); tweetDummy.tweetID = "Hello :)"
+        
+        tweets.append(tweetDummy)
+        
     }
 
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        ///// Reload the profile pic and background pic
+        
+        
+    }
     
     
     
@@ -28,13 +64,13 @@ class FollowerDetailsViewController: UIViewController, UITableViewDelegate, UITa
     // MARK: - Table view data source
     
      func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+      
         return 1
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 20
+    
+        return tweets.count
     }
     
     
@@ -43,7 +79,8 @@ class FollowerDetailsViewController: UIViewController, UITableViewDelegate, UITa
         
         // Configure the cell...
         
-        cell.textLabel?.text = "\"\( indexPath.row )\" Tweeeeeeet :)."
+        cell.textLabel?.text = tweets[indexPath.row].tweetID!
+        
         
         
         return cell
@@ -75,3 +112,52 @@ class FollowerDetailsViewController: UIViewController, UITableViewDelegate, UITa
     */
 
 }
+
+//MARK:- Extension for ViewProtocol
+extension FollowerDetailsViewController : TweetsViewProtocol{
+
+    
+    func showProgressBar(){
+        
+        print("VC:: Viewing progress bar ...")
+        
+        //1. Network Indicator
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        //2. ProgressBar
+        progressBar = showMBProgressBar(view: self.view, title: "Loading")
+        progressBar?.show(animated: true)
+        
+    }
+    
+    func hideProgressBar(){
+        
+        print("VC:: Hiding progress bar ...")
+        
+        //1. Network Indicator
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        //2. ProgressBar
+        progressBar?.hide(animated: true)
+        
+    }
+    
+    func showErrorMsg(errorMsg : String){
+        
+        showAlert(message: "Error!", title: errorMsg)
+        
+    }
+    
+    
+    func updateTweetsList(newTweets: [Tweet] ){
+    
+        print("Updating Tweets ...")
+        
+    
+    }
+
+
+}
+
+
+

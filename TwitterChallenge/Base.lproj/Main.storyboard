@@ -188,12 +188,23 @@
                                     <constraint firstAttribute="height" constant="150" id="5gA-Od-Gla"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="EUS-uA-WoA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="EUS-uA-WoA" customClass="WHRoundedImageView" customModule="WHRoundedImageView">
                                 <rect key="frame" x="147" y="110" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="30g-Kr-cEj"/>
                                     <constraint firstAttribute="width" constant="120" id="8if-bt-sOt"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.73236677948947815" green="0.84641508548809608" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radiusRatio">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ MomoRamadan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frQ-J9-ZMW">
                                 <rect key="frame" x="50" y="246" width="314" height="21"/>
@@ -248,7 +259,10 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backgroundImage" destination="cyL-fI-R7R" id="4Yw-Ue-wD5"/>
+                        <outlet property="profileImage" destination="EUS-uA-WoA" id="knk-ke-5Qe"/>
                         <outlet property="tweetsTableView" destination="YfQ-Sf-wQ9" id="Y7j-sR-63q"/>
+                        <outlet property="usenameLabel" destination="frQ-J9-ZMW" id="m0V-MN-vgZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIF-5P-RoN" userLabel="First Responder" sceneMemberID="firstResponder"/>

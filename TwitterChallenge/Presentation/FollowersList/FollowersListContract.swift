@@ -13,7 +13,7 @@ protocol FollowersViewProtocol {
     func showProgressBar();
     func hideProgressBar();
     func showErrorMsg(errorMsg : String);
-    func updateFollowersList(followers: [Follower] );
+    func updateFollowersList(newFollowers: [Follower] );
     
 }
 

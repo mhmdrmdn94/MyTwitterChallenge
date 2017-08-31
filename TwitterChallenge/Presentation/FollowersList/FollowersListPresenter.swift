@@ -36,7 +36,7 @@ class FollowersPresenter: FollowersPresenterProtocol {
             
             let followersList = responseAny as! [Follower]
             self.view?.hideProgressBar()
-            self.view?.updateFollowersList(followers: followersList)
+            self.view?.updateFollowersList(newFollowers: followersList)
             
         
         }, onFailure_presenter: {

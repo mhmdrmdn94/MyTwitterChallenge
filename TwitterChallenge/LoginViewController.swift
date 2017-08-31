@@ -9,6 +9,8 @@
 import UIKit
 import TwitterKit
 import DropDown
+import MBProgressHUD
+
 
 class LoginViewController: BaseViewController {
 
@@ -16,6 +18,8 @@ class LoginViewController: BaseViewController {
     let usersDropDown = DropDown()
     var usersDropDown_dataSource : [String] = []
     static var selectedUser : (username: String, userid: String) = ("","")
+    var progressBar : MBProgressHUD?
+    var presenter : LoginPresenter?
     
     
     //MARK:- Outlets and Actions
@@ -35,12 +39,10 @@ class LoginViewController: BaseViewController {
     @IBAction func loginBtnTapped(_ sender: UIButton) {
     
         print("Logging in .... :)")
-    
-        let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
+        print("getting bearerToken ..")
         
-        followersVC.loggedUserData = LoginViewController.selectedUser
-   
-        self.navigationController?.pushViewController(followersVC, animated: true)
+        self.getBearerToken()
+        
     }
     
     
@@ -54,6 +56,11 @@ class LoginViewController: BaseViewController {
      
         ///// Dynamically add the LoginWithTwitter button for one time
         self.addTWTRLoginBtn()
+        
+        
+        
+        //Linking presenter
+        self.presenter = LoginPresenter(view: self)
         
     }
     
@@ -140,13 +147,11 @@ class LoginViewController: BaseViewController {
         let logInButton = TWTRLogInButton(logInCompletion: { session, error in
             if (session != nil) {
                 // New User >>> Coming from safari
-         
-                let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
+                
+                LoginViewController.selectedUser = ((session?.userName)!, (session?.userID)!)
+                
+                self.getBearerToken()
 
-                followersVC.loggedUserData = ( session?.userName, session?.userID ) as? (username: String, userid: String)
-                
-                self.navigationController?.pushViewController(followersVC, animated: true)
-                
             }else{
                
                 // show an ALERT includes ErrorDesc.
@@ -176,6 +181,16 @@ class LoginViewController: BaseViewController {
         UserDefaults.standard.set(loggedDictionary, forKey: ConstantUrls.loggedinsKey)
     }
     
+    
+    
+    //MARK:- Getting bearerToken
+    func getBearerToken(){
+        
+        self.presenter?.getBearerToken(encodedKeys: ConstantUrls.encodedToken)
+        
+    }
+    
+    
 }
 
 
@@ -184,19 +199,51 @@ class LoginViewController: BaseViewController {
 extension LoginViewController : LoginViewProtocol{
 
     func showProgressBar(){
-    
-    
+        
+        print("VC:: Viewing progress bar ...")
+        
+        //1. Network Indicator
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        //2. ProgressBar
+        progressBar = showMBProgressBar(view: self.view, title: "Authenticating ...")
+        progressBar?.show(animated: true)
+        
     }
     
     func hideProgressBar(){
-    
-    
+        
+        print("VC:: Hiding progress bar ...")
+        
+        //1. Network Indicator
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        //2. ProgressBar
+        progressBar?.hide(animated: true)
+        
     }
     
     func showErrorMsg(errorMsg : String){
-    
-    
+        
+        showAlert(message: "Error!", title: errorMsg)
+        
     }
     
+    func updateBearerTokenValue(bearer: String){
+    
+        print(" ::  :: >> \(bearer)")
+        print("** Got bearer and going to followersList :)")
+        
+        ConstantUrls.bearerToken = bearer
+        
+        
+        let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
+        
+        followersVC.loggedUserData = LoginViewController.selectedUser
+        
+        self.navigationController?.pushViewController(followersVC, animated: true)
+        
+        
+    }
     
 }

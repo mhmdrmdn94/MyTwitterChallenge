@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+
+
+
+/*
+ 
+    NO IMPLEMENTATION, because bearer value can only be get ONLINE
+ 
+ 
+ */
