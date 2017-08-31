@@ -31,10 +31,10 @@ class FollowersRemoteDS: FollowersDataSource {
         
             responseAny in
             
-            let followers : [Follower] = []
+            var followers : [Follower] = []
             var dummy = Follower(); dummy.followerID = "I am from backend :)"
             /// parse data to followers array
-            
+            followers.append(dummy)
                 onSuccess_repo(followers)
         
         }, onFailure: {

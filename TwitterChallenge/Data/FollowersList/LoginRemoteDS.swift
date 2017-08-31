@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class LoginRemoteDS : LoginDataSource {
     
@@ -21,15 +22,11 @@ class LoginRemoteDS : LoginDataSource {
         //1. prepare the urlToBeHit
         let url = ConstantUrls.baseURL + ConstantUrls.bearerURL
         
-        print("^^ \(url)")
-        
-        
         //2. prepare the request headers
         let headers: HTTPHeaders = [
             "Authorization": "Basic \(ConstantUrls.encodedToken)",
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
         ]
-    
         
         //2. prepare the request params
         let parameters: Parameters = ["grant_type": "client_credentials"]
@@ -42,9 +39,29 @@ class LoginRemoteDS : LoginDataSource {
             
                 /// Extract your data and parse it to string
             
+                var json = responseAny as! JSON
             
-                onSuccess_repo("I am BEARER :)")
-        
+                if json["token_type"].string != nil {
+                    
+                    if  json["token_type"].string! == "bearer"{
+                    
+                        let bearerToken = json["access_token"].string!
+                        print(" >>> BEARER: \(bearerToken)")
+                        
+                        onSuccess_repo(bearerToken)
+                        
+                    
+                    }else{
+                        onFailure_repo("Something went wrong!")
+                    }
+                    
+                } else {
+                    
+                    print(json["token_type"].error!) // does not exist"
+                    onFailure_repo("Something went wrong!")
+                }
+            
+            
         }, onFailure: {
         
             errorObj in

@@ -16,6 +16,17 @@ struct TweetsUsecase : UsecaseProtocol{
     func executeUseCase(requestValues: RequestValues,onSuccess_preseneter:@escaping(Any) -> Void, onFailure_presenter:@escaping (String) -> Void){
     
         
+        repo?.getData(requestValues: requestValues, onSuccess_usecase: {
+        
+            responseAny in
+            onSuccess_preseneter(responseAny)
+            
+        }, onFailure_usecase: {
+        
+            errorStr in
+            onFailure_presenter(errorStr)
+        })
+        
     
     
     }
@@ -28,6 +39,6 @@ struct TweetsUsecase : UsecaseProtocol{
 
 struct TweetsRequestValues : RequestValues {
     
-    var loggedUserID : String?
+    var followerID : String?
     
 }

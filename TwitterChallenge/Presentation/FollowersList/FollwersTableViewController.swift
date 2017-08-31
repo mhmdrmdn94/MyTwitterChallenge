@@ -90,9 +90,9 @@ class FollwersTableViewController: BaseTableViewController {
     
       override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "detailsVC") as! FollowerDetailsViewController
+        let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "detailsVC") as! FollowerDetailsViewController
         
-        //self.navigationController?.pushViewController(detailsVC, animated: true)
+        self.navigationController?.pushViewController(detailsVC, animated: true)
         
         
     }
@@ -130,7 +130,7 @@ extension FollwersTableViewController : FollowersViewProtocol{
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
         //2. ProgressBar
-        progressBar = showMBProgressBar(view: self.view, title: "Loading")
+        progressBar = showMBProgressBar(view: self.view, title: "Loading Followers List ...")
         progressBar?.show(animated: true)
         
     }

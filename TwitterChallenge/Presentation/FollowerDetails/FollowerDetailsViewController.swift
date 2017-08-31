@@ -56,6 +56,12 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         ///// Reload the profile pic and background pic
         
         
+        
+        
+        /// get tweets
+        self.presenter?.getTweets(followerID: "3019552516")
+        
+        
     }
     
     
@@ -125,7 +131,7 @@ extension FollowerDetailsViewController : TweetsViewProtocol{
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
         //2. ProgressBar
-        progressBar = showMBProgressBar(view: self.view, title: "Loading")
+        progressBar = showMBProgressBar(view: self.view, title: "Loading RecentTweets...")
         progressBar?.show(animated: true)
         
     }
@@ -152,7 +158,7 @@ extension FollowerDetailsViewController : TweetsViewProtocol{
     func updateTweetsList(newTweets: [Tweet] ){
     
         print("Updating Tweets ...")
-        
+        tweets = newTweets
     
     }
 

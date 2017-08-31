@@ -21,6 +21,6 @@ protocol TweetsViewProtocol {
 
 protocol TweetsPresenterProtocol {
     
-    func getTweets(userid: String);
+    func getTweets(followerID: String);
     
 }

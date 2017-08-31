@@ -231,7 +231,6 @@ extension LoginViewController : LoginViewProtocol{
     
     func updateBearerTokenValue(bearer: String){
     
-        print(" ::  :: >> \(bearer)")
         print("** Got bearer and going to followersList :)")
         
         ConstantUrls.bearerToken = bearer

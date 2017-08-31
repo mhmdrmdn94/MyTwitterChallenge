@@ -199,7 +199,7 @@
                                         <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.73236677948947815" green="0.84641508548809608" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.38454172826113081" green="0.52270378492764602" blue="0.8384472150259068" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="radiusRatio">
                                         <real key="value" value="0.10000000000000001"/>
@@ -267,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIF-5P-RoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1946" y="884"/>
+            <point key="canvasLocation" x="1810" y="884"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SzY-O3-6vB">
