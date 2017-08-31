@@ -8,14 +8,16 @@
 
 import UIKit
 import MBProgressHUD
+import WHRoundedImageView
+import SDWebImage
 
 class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     @IBOutlet weak var tweetsTableView: UITableView!
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usenameLabel: UILabel!
+    @IBOutlet weak var profileImage: WHRoundedImageView!
     
     
     
@@ -40,26 +42,23 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         
         self.presenter = TweetsPresenter(view: self)
         
-        
-        
-        //Testing block
-        var tweetDummy = Tweet(); tweetDummy.tweetID = "Hello :)"
-        
-        tweets.append(tweetDummy)
-        
     }
 
     
     
     override func viewWillAppear(_ animated: Bool) {
         
-        ///// Reload the profile pic and background pic
+        ///// Reload the profile pic, background pic and handle
+        //1.
+        print("=== \((selectedFollower?.backgroundmage!)!)")
+        let bgURL = URL(string: (selectedFollower?.backgroundmage!)!)
+        backgroundImage.sd_setImage(with: bgURL, placeholderImage: UIImage(named: "placeholder.png"))
         
-        
+        //2.
         
         
         /// get tweets
-        self.presenter?.getTweets(followerID: "3019552516")
+        self.presenter?.getTweets(followerID: (selectedFollower?.followerID!)!)
         
         
     }
@@ -85,7 +84,7 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         
         // Configure the cell...
         
-        cell.textLabel?.text = tweets[indexPath.row].tweetID!
+        cell.textLabel?.text = tweets[indexPath.row].content!
         
         
         

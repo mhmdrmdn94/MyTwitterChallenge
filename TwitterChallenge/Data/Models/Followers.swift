@@ -28,8 +28,8 @@ class Follower {
         fullName = json["name"].stringValue
         description = json["description"].stringValue
         screenName = json["screen_name"].stringValue
-        profileImage = json["profile_image_url"].stringValue
-        backgroundmage = json["profile_background_image_url"].stringValue
+        profileImage = json["profile_image_url_https"].stringValue
+        backgroundmage = json["profile_background_image_url_https"].stringValue
         
     }
     

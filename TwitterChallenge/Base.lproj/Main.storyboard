@@ -260,7 +260,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backgroundImage" destination="cyL-fI-R7R" id="4Yw-Ue-wD5"/>
-                        <outlet property="profileImage" destination="EUS-uA-WoA" id="knk-ke-5Qe"/>
+                        <outlet property="profileImage" destination="EUS-uA-WoA" id="F2Y-CK-QLf"/>
                         <outlet property="tweetsTableView" destination="YfQ-Sf-wQ9" id="Y7j-sR-63q"/>
                         <outlet property="usenameLabel" destination="frQ-J9-ZMW" id="m0V-MN-vgZ"/>
                     </connections>

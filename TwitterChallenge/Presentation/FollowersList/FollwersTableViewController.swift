@@ -89,6 +89,8 @@ class FollwersTableViewController: BaseTableViewController {
         
         let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "detailsVC") as! FollowerDetailsViewController
         
+        detailsVC.selectedFollower = followers[indexPath.row]
+        
         self.navigationController?.pushViewController(detailsVC, animated: true)
         
         

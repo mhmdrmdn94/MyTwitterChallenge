@@ -57,6 +57,8 @@ struct AlamofireAPI: BackendAPI {
     func executePostRequest(url:String,parameters: [String:Any]?,header : [String:String]?,onSuccess:@escaping (Any) -> Void, onFailure:@escaping (Error) -> Void){
     
         
+        print("-- ---- --- --")
+        
         Alamofire.request(url, method: .post, parameters: parameters, headers: header ).responseJSON { (response:DataResponse<Any>) in
             
             

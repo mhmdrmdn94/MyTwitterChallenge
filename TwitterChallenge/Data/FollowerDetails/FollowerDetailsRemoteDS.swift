@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 import Alamofire
 
 class TweetsRemoteDS : TweetsDataSource {
@@ -35,7 +36,15 @@ class TweetsRemoteDS : TweetsDataSource {
             
             var tweets : [Tweet] = []
             
-            var test = Tweet(); test.tweetID = "New Coming tweeeeeet :)"; tweets.append(test)
+            let json = responseAny as! JSON
+            
+            let tweetsArr = json.array!
+            
+            for tweetJson in tweetsArr{
+                
+                let tweetObj = Tweet(json: tweetJson)
+                tweets.append(tweetObj)
+            }
             
             onSuccess_repo(tweets)
         
