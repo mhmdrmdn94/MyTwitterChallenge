@@ -57,9 +57,6 @@ class FollwersTableViewController: BaseTableViewController {
             self.presenter?.getFollowers(userid: (loggedUserData?.userid)!)
         }
         
-        let dummy = Follower(); dummy.followerID = "1234567"
-        
-        followers.append(dummy)
         
     }
     
@@ -81,7 +78,7 @@ class FollwersTableViewController: BaseTableViewController {
 
         // Configure the cell...
 
-        cell.textLabel?.text = followers[indexPath.row].followerID!
+        cell.textLabel?.text = followers[indexPath.row].fullName!
         
         
         return cell

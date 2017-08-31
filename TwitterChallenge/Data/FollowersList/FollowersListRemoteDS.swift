@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class FollowersRemoteDS: FollowersDataSource {
     
@@ -32,10 +33,20 @@ class FollowersRemoteDS: FollowersDataSource {
             responseAny in
             
             var followers : [Follower] = []
-            var dummy = Follower(); dummy.followerID = "I am from backend :)"
-            /// parse data to followers array
-            followers.append(dummy)
-                onSuccess_repo(followers)
+            
+            let json = responseAny as! JSON
+            
+            let usersArr = json["users"].arrayValue
+            
+            for userJson in usersArr{
+            
+                let followerObj = Follower(json: userJson)
+                followers.append(followerObj)
+                
+            }
+            
+            
+            onSuccess_repo(followers)
         
         }, onFailure: {
         
