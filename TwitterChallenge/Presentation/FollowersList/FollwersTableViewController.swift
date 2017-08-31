@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import TwitterKit
 
 class FollwersTableViewController: UITableViewController {
 
+    
+    var loggedUserData : (username: String, userid: String)?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +31,23 @@ class FollwersTableViewController: UITableViewController {
         
     }
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.hidesBackButton = true
+        
+        
+        
+        
+        if let logged = loggedUserData{
+        
+            print("FollowersVC >>> currentID=\(logged)")
+            
+        }
+        
+        
+        
+    }
     
     // MARK: - Table view data source
 
@@ -107,4 +128,25 @@ class FollwersTableViewController: UITableViewController {
     }
     */
 
+    
+    
+    //MARK:- Logout button is tapped
+    
+    
+    
+    @IBAction func logoutIsTapped(_ sender: UIBarButtonItem) {
+        
+        print("Logging out ...")
+        
+        let store = Twitter.sharedInstance().sessionStore
+        store.logOutUserID((self.loggedUserData?.userid)!)
+        LoginViewController.updateUserDefaultsLoggedInUsers()
+        
+        print("Loggedout Successfully . ..")
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    
 }

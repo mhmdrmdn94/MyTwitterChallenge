@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Twitter.sharedInstance().start(withConsumerKey: ConstantUrls.consumerKey, consumerSecret: ConstantUrls.consumerSecret)
 
         
+        /////// Here, Update usersDropDownMenu after launching application
+        self.updateLoggedInUsersMenu()
+        
+        
         return true
     }
 
@@ -108,39 +112,39 @@ extension AppDelegate{
         
       
         /////// Here, New user has been successflly AUTHENTICATED :)
-        
-        /// 1. add him to NSUserDefaults to map between ["Username", "UserId"]
-        
-        
-            ///a. get the actual LOGGED_INs from UserDefaults if exists.
-            ///b. update the LOGGED_INs dictionary
-        
-        
-            var loggedDictionary : [String:String] = [:]
-            let store = Twitter.sharedInstance().sessionStore
-            let sessions = store.existingUserSessions()
-        
-            for session in sessions{
-        
-                let sessionObj = session as! TWTRSession
-                loggedDictionary[sessionObj.userID] = sessionObj.userName
-        
-                print("Session Contains ... \(sessionObj.userName)")
-                
-            }
-        
-            UserDefaults.standard.set(loggedDictionary, forKey: "LOGGED_INs")
-        
-        
-        
-        /// 2. change the fromSafari flag to TRUE to skip the login screen
-        LoginViewController.fromSafari = true
-        
+       self.updateLoggedInUsersMenu()
         
         
         return Twitter.sharedInstance().application(app, open: url, options: options)
     }
 
+    
+    
+    
+    
+    func updateLoggedInUsersMenu(){
+        
+        /// 1. add him to NSUserDefaults to map between ["Username", "UserId"]
+        ///a. get the actual LOGGED_INs from UserDefaults if exists.
+        ///b. update the LOGGED_INs dictionary
+        
+        
+        var loggedDictionary : [String:String] = [:]
+        let store = Twitter.sharedInstance().sessionStore
+        let sessions = store.existingUserSessions()
+        
+        for session in sessions{
+            
+            let sessionObj = session as! TWTRSession
+            loggedDictionary[sessionObj.userName] = sessionObj.userID
+            
+            print("Session Contains ... \(sessionObj.userName)")
+            
+        }
+        
+        UserDefaults.standard.set(loggedDictionary, forKey: ConstantUrls.loggedinsKey)
+        
+    }
 
 
 }

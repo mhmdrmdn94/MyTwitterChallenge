@@ -10,46 +10,25 @@ import UIKit
 import TwitterKit
 import DropDown
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
-    
-    
-    static var fromSafari = false
+   
     let usersDropDown = DropDown()
     var usersDropDown_dataSource : [String] = []
-   
-    var currentSelectedUsername : String = "" {
-        didSet{
-            
-            if !currentSelectedUsername.isEmpty{
-            
-                loginBtn.isEnabled = true
-                print("CurrentSelectedUsername = \( currentSelectedUsername )")
-            }else{
-                
-                print("CurrentSelectedUsername = \( currentSelectedUsername )")
-                loginBtn.isEnabled = false
-            }
-        }
-    }
-    
-    
+    static var selectedUser : (username: String, userid: String) = ("","")
     
     
     //MARK:- Outlets and Actions
     
     
     @IBOutlet weak var lowerVeiw: UIView!
-    
     @IBOutlet weak var dropDownBtn: UIButton!
     @IBAction func dropDownBtnTapped(_ sender: UIButton) {
-        
         
             if !usersDropDown_dataSource.isEmpty {
                 
                 usersDropDown.show()
             }
-        
     }
     
     @IBOutlet weak var loginBtn: UIButton!
@@ -57,6 +36,11 @@ class LoginViewController: UIViewController {
     
         print("Logging in .... :)")
     
+        let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
+        
+        followersVC.loggedUserData = LoginViewController.selectedUser
+   
+        self.navigationController?.pushViewController(followersVC, animated: true)
     }
     
     
@@ -71,34 +55,26 @@ class LoginViewController: UIViewController {
         ///// Dynamically add the LoginWithTwitter button for one time
         self.addTWTRLoginBtn()
         
-      
-        
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
+        self.navigationController?.isNavigationBarHidden = true
         
-        if LoginViewController.fromSafari{
         
-            print("Direct to FollowersList")
-        
-            LoginViewController.fromSafari = false
-            
+        if usersDropDown_dataSource.isEmpty{
+            dropDownBtn.titleLabel?.textColor = UIColor.red
+        }else{
+            dropDownBtn.titleLabel?.textColor = UIColor.blue
         }
         
         
         
-        
-        
-        /////// - - - - -
-        
         usersDropDown_dataSource = []
-        currentSelectedUsername = ""
+        LoginViewController.selectedUser = ("", "")
+        loginBtn.isEnabled = false
         
         usersDropDown.anchorView = dropDownBtn
-        
         
         //// get last loggedin users from NSUserDefaults
         if UserDefaults.standard.value(forKey: ConstantUrls.loggedinsKey) != nil
@@ -109,73 +85,121 @@ class LoginViewController: UIViewController {
             
             for user in usersDict
             {
-                    usersDropDown_dataSource.append(user.value)
+                usersDropDown_dataSource.append(user.key)
             }
             
             if !usersDropDown_dataSource.isEmpty
             {
-                    currentSelectedUsername = ""
-                    dropDownBtn.setTitle("Tap to select", for: .normal)
-                    dropDownBtn.titleLabel?.textColor = UIColor.blue
+                LoginViewController.selectedUser = ("", "")
+                loginBtn.isEnabled = false
+                dropDownBtn.setTitle("Tap to select", for: .normal)
+                dropDownBtn.titleLabel?.textColor = UIColor.blue
           
             }else{
-                    //// All are loggedOUT
-                    /// No recent logs
-                    dropDownBtn.setTitle("No Recent Logs!", for: .normal)
-                    dropDownBtn.titleLabel?.textColor = UIColor.red
-                    currentSelectedUsername = ""
-          
+                //// All are loggedOUT
+                /// No recent logs
+                dropDownBtn.setTitle("No Recent Logs!", for: .normal)
+                dropDownBtn.titleLabel?.textColor = UIColor.red
+                LoginViewController.selectedUser = ("", "")
+                loginBtn.isEnabled = false
+                
             }
             
         }else{
             //// No recent logs
             dropDownBtn.setTitle("No Recent Logs!", for: .normal)
             dropDownBtn.titleLabel?.textColor = UIColor.red
-            currentSelectedUsername = ""
+            LoginViewController.selectedUser = ("", "")
+            loginBtn.isEnabled = false
+            
         }
-        
-     
         
         
         usersDropDown.dataSource = usersDropDown_dataSource
-        
-        
+      
         // Action triggered on menu item selection
         usersDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             
-            self.currentSelectedUsername = item
+            LoginViewController.selectedUser.username = item
+        
+            /// get selected userid
+            let usersDict = UserDefaults.standard.value(forKey: ConstantUrls.loggedinsKey) as! [String:String]
+            LoginViewController.selectedUser.userid = usersDict[item]!
+            
+            self.loginBtn.isEnabled = true
             self.dropDownBtn.setTitle(item, for: .normal)
-            print("Selected item: \(item) ")
+            print("Selected item: \(LoginViewController.selectedUser) ")
             
         }
 
         
-        
-        
-    }
+    }///End of ViewWillAppear
     
     
+    
+    //MARK:- Dynamically add TWTRLoginBtn
     func addTWTRLoginBtn(){
         
         let logInButton = TWTRLogInButton(logInCompletion: { session, error in
             if (session != nil) {
+                // New User >>> Coming from safari
+         
+                let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
+
+                followersVC.loggedUserData = ( session?.userName, session?.userID ) as? (username: String, userid: String)
                 
-                print("signed in as \(String(describing: session?.userName))");
+                self.navigationController?.pushViewController(followersVC, animated: true)
                 
-                
-            } else {
-                
+            }else{
+               
+                // show an ALERT includes ErrorDesc.
                 print("error: \(String(describing: error?.localizedDescription))");
-                
+                self.showErrorMsg(errorMsg: (error?.localizedDescription)!)
             }
         })
         
         logInButton.center = self.lowerVeiw.center
-        
         self.view.addSubview(logInButton)
     }
     
     
-
+    //MARK:- This is where I populate LoggedInsUsers dictionary to UserDefaults from TWTRSessionStore
+    static func updateUserDefaultsLoggedInUsers(){
+        
+        var loggedDictionary : [String:String] = [:]
+        let store = Twitter.sharedInstance().sessionStore
+        let sessions = store.existingUserSessions()
+        
+        for session in sessions{
+            
+            let sessionObj = session as! TWTRSession
+            loggedDictionary[sessionObj.userName] = sessionObj.userID
+        }
+        
+        UserDefaults.standard.set(loggedDictionary, forKey: ConstantUrls.loggedinsKey)
+    }
+    
 }
 
+
+
+//MARK:- Extension for LoginVeiwProtocol
+extension LoginViewController : LoginViewProtocol{
+
+    func showProgressBar(){
+    
+    
+    }
+    
+    func hideProgressBar(){
+    
+    
+    }
+    
+    func showErrorMsg(errorMsg : String){
+    
+    
+    }
+    
+    
+}

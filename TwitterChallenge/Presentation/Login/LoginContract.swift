@@ -13,7 +13,6 @@ protocol LoginViewProtocol {
     func showProgressBar();
     func hideProgressBar();
     func showErrorMsg(errorMsg : String);
-    func updateView();
     
 }
 
