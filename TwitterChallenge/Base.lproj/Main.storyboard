@@ -130,26 +130,81 @@
         <scene sceneID="U5j-AT-3Jx">
             <objects>
                 <tableViewController storyboardIdentifier="listVC" id="qUf-Qx-2f5" customClass="FollwersTableViewController" customModule="TwitterChallenge" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hcz-HK-qq1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="136" sectionHeaderHeight="28" sectionFooterHeight="28" id="hcz-HK-qq1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="followerCell" textLabel="fdP-QA-ry1" style="IBUITableViewCellStyleDefault" id="tr8-16-PXm">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="followerCell" rowHeight="136" id="tr8-16-PXm">
+                                <rect key="frame" x="0.0" y="28" width="414" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tr8-16-PXm" id="vdf-S0-yEh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fdP-QA-ry1">
-                                            <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ad1-Q4-Qg1">
+                                            <rect key="frame" x="16" y="16" width="390" height="90"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_default" translatesAutoresizingMaskIntoConstraints="NO" id="dR9-NF-l40" customClass="WHRoundedImageView" customModule="WHRoundedImageView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="90" id="9LW-df-Uuy"/>
+                                                        <constraint firstAttribute="width" constant="90" id="ptW-Gv-Gwb"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="radiusRatio">
+                                                            <real key="value" value="0.10000000000000001"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.22223887849999999" green="0.62202697350000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v6E-lG-anp">
+                                                    <rect key="frame" x="100" y="0.0" width="290" height="90"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lb-eL-yIR">
+                                                            <rect key="frame" x="0.0" y="0.0" width="290" height="45"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j60-st-FyW">
+                                                            <rect key="frame" x="0.0" y="45" width="290" height="45"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="90" id="D9c-Yw-V2I"/>
+                                            </constraints>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCh-hE-tg8">
+                                            <rect key="frame" x="8" y="118" width="398" height="12.666666666666657"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
+                                            <color key="textColor" red="0.22223887849999999" green="0.62202697350000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="YCh-hE-tg8" secondAttribute="bottom" constant="5" id="5nC-Vi-4q8"/>
+                                        <constraint firstItem="ad1-Q4-Qg1" firstAttribute="top" secondItem="vdf-S0-yEh" secondAttribute="top" constant="16" id="Lox-co-ZHV"/>
+                                        <constraint firstItem="YCh-hE-tg8" firstAttribute="top" secondItem="ad1-Q4-Qg1" secondAttribute="bottom" constant="12" id="SXL-sS-hgF"/>
+                                        <constraint firstAttribute="trailing" secondItem="ad1-Q4-Qg1" secondAttribute="trailing" constant="8" id="Wq9-4j-ihk"/>
+                                        <constraint firstItem="ad1-Q4-Qg1" firstAttribute="leading" secondItem="vdf-S0-yEh" secondAttribute="leading" constant="16" id="bRK-UC-7Jq"/>
+                                        <constraint firstItem="YCh-hE-tg8" firstAttribute="leading" secondItem="vdf-S0-yEh" secondAttribute="leading" constant="8" id="d1Z-dS-3VV"/>
+                                        <constraint firstAttribute="trailing" secondItem="YCh-hE-tg8" secondAttribute="trailing" constant="8" id="fSC-bf-yaD"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -188,7 +243,7 @@
                                     <constraint firstAttribute="height" constant="150" id="5gA-Od-Gla"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="EUS-uA-WoA" customClass="WHRoundedImageView" customModule="WHRoundedImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_default" translatesAutoresizingMaskIntoConstraints="NO" id="EUS-uA-WoA" customClass="WHRoundedImageView" customModule="WHRoundedImageView">
                                 <rect key="frame" x="147" y="110" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="30g-Kr-cEj"/>
@@ -308,6 +363,6 @@
     </scenes>
     <resources>
         <image name="norway" width="960" height="640"/>
-        <image name="test" width="2048" height="2048"/>
+        <image name="user_default" width="60" height="60"/>
     </resources>
 </document>

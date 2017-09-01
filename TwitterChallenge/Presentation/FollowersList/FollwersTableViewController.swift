@@ -9,6 +9,7 @@
 import UIKit
 import TwitterKit
 import  MBProgressHUD
+import WHRoundedImageView
 
 class FollwersTableViewController: BaseTableViewController {
 
@@ -41,6 +42,10 @@ class FollwersTableViewController: BaseTableViewController {
         self.navigationItem.title = "Your Followers"
         
         self.presenter = FollowersPresenter(view: self)
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 300
+        
         
     }
 
@@ -78,7 +83,17 @@ class FollwersTableViewController: BaseTableViewController {
 
         // Configure the cell...
 
-        cell.textLabel?.text = followers[indexPath.row].fullName!
+        
+        let followerName = cell.viewWithTag(1) as! UILabel
+        let followerHandle = cell.viewWithTag(2) as! UILabel
+        let followerBio = cell.viewWithTag(3) as! UILabel
+        let followerImage = cell.viewWithTag(4) as! WHRoundedImageView
+        
+        
+        followerName.text = followers[indexPath.row].fullName!
+        followerHandle.text = "@\(followers[indexPath.row].screenName!)"
+        followerBio.text = followers[indexPath.row].description!
+        followerImage.sd_setImage(with: URL(string: followers[indexPath.row].profileImage!), placeholderImage: UIImage(named: "user_default"))
         
         
         return cell

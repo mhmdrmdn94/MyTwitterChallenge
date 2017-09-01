@@ -52,9 +52,15 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         //1.
         print("=== \((selectedFollower?.backgroundmage!)!)")
         let bgURL = URL(string: (selectedFollower?.backgroundmage!)!)
-        backgroundImage.sd_setImage(with: bgURL, placeholderImage: UIImage(named: "placeholder.png"))
+        backgroundImage.sd_setImage(with: bgURL, placeholderImage: UIImage(named: "user_default"))
         
         //2.
+        let profileURL = URL(string: (selectedFollower?.profileImage!)!)
+        profileImage.sd_setImage(with: profileURL, placeholderImage: UIImage(named: "user_default"))
+        
+        
+        //3.
+        usenameLabel.text = "@\(String(describing: selectedFollower?.screenName!))"
         
         
         /// get tweets

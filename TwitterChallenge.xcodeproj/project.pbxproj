@@ -44,7 +44,6 @@
 		77B7087B1F502B970096CE34 /* LoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087A1F502B970096CE34 /* LoginUsecase.swift */; };
 		77B7087D1F502BB80096CE34 /* FollowersListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087C1F502BB80096CE34 /* FollowersListUsecase.swift */; };
 		77B7087F1F502C070096CE34 /* FollowerDetailsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087E1F502C070096CE34 /* FollowerDetailsUsecase.swift */; };
-		77B708811F502C2A0096CE34 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708801F502C2A0096CE34 /* BasePresenter.swift */; };
 		77C0E01A1F4E9A4400F95173 /* FollwersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */; };
 		77C0E01C1F4E9A6000F95173 /* FollowerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */; };
 		77DC48421F581772002E51E8 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC48411F581772002E51E8 /* Followers.swift */; };
@@ -99,7 +98,6 @@
 		77B7087A1F502B970096CE34 /* LoginUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUsecase.swift; sourceTree = "<group>"; };
 		77B7087C1F502BB80096CE34 /* FollowersListUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListUsecase.swift; sourceTree = "<group>"; };
 		77B7087E1F502C070096CE34 /* FollowerDetailsUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsUsecase.swift; sourceTree = "<group>"; };
-		77B708801F502C2A0096CE34 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		77C0E0191F4E9A4400F95173 /* FollwersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollwersTableViewController.swift; sourceTree = "<group>"; };
 		77C0E01B1F4E9A6000F95173 /* FollowerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsViewController.swift; sourceTree = "<group>"; };
 		77DC48411F581772002E51E8 /* Followers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 			children = (
 				770DD25D1F4DC32A00F9AAB4 /* Main.storyboard */,
 				77DC484E1F58336C002E51E8 /* BaseExtensions.swift */,
-				77B708801F502C2A0096CE34 /* BasePresenter.swift */,
 				779B9AAF1F50406B00926F2F /* BaseViewController.swift */,
 				77DC48451F581AC9002E51E8 /* BaseTableViewController.swift */,
 				77C0E0111F4E98E400F95173 /* Presentation */,
@@ -489,7 +486,6 @@
 			files = (
 				77DC48421F581772002E51E8 /* Followers.swift in Sources */,
 				77B7085F1F501E4D0096CE34 /* FollowerDetailsRepository.swift in Sources */,
-				77B708811F502C2A0096CE34 /* BasePresenter.swift in Sources */,
 				77B7087B1F502B970096CE34 /* LoginUsecase.swift in Sources */,
 				77B708671F501ED40096CE34 /* FollowersListDataSource.swift in Sources */,
 				779B9AB01F50406B00926F2F /* BaseViewController.swift in Sources */,
