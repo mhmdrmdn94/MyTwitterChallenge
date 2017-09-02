@@ -17,6 +17,7 @@ class Follower {
     var screenName : String?    //handle
     var profileImage : String?
     var backgroundmage : String?
+    var protected : Bool?     //to check if i am able to access his timeline
     
     init() {
         
@@ -30,7 +31,9 @@ class Follower {
         screenName = json["screen_name"].stringValue
         profileImage = json["profile_image_url_https"].stringValue
         backgroundmage = json["profile_background_image_url_https"].stringValue
+        protected = json["protected"].boolValue
         
+        print(">>>>>>>> \(backgroundmage!)")
     }
     
     

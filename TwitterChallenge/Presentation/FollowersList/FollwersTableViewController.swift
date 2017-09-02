@@ -102,12 +102,24 @@ class FollwersTableViewController: BaseTableViewController {
     
       override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "detailsVC") as! FollowerDetailsViewController
         
-        detailsVC.selectedFollower = followers[indexPath.row]
+        //// first, check if his time line is protected or not
+        if followers[indexPath.row].protected!{
         
-        self.navigationController?.pushViewController(detailsVC, animated: true)
+            //Sorry, You don't follow him, so you are not authorized to see his profile! [Protected timeline]
+       
+            self.showAlert(message: "Follow and Try Again.", title: "Sorry, \( followers[indexPath.row].fullName! ) has a protected profile!")
+            
+        }else{
         
+            /// You are authorized to access his profile
+            let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "detailsVC") as! FollowerDetailsViewController
+            
+            detailsVC.selectedFollower = followers[indexPath.row]
+            
+            self.navigationController?.pushViewController(detailsVC, animated: true)
+        
+        }
         
     }
     
