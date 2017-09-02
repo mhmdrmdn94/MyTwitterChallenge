@@ -66,9 +66,31 @@ class LoginViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        
+        //Check first if a user is already logged-in
+        
+        if UserDefaults.standard.value(forKey: ConstantUrls.currentLoggedInUserKey) != nil{
+        
+            let currentUserDictionary = UserDefaults.standard.value(forKey: ConstantUrls.currentLoggedInUserKey) as! [String:String]
+        
+            
+            //I am sure that there will exist ONLY one value
+            let (username, userid) = currentUserDictionary.first!
+            
+            //3. navigate to followers view controller
+            let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
+            
+            followersVC.loggedUserData = (username, userid)
+            
+            self.navigationController?.pushViewController(followersVC, animated: true)
+            
+            
+        }
+        
+        
+        
+        
         self.navigationController?.isNavigationBarHidden = true
-        
-        
         
         usersDropDown_dataSource = []
         LoginViewController.selectedUser = ("", "")
@@ -233,9 +255,17 @@ extension LoginViewController : LoginViewProtocol{
     
         print("** Got bearer and going to followersList :)")
         
+        //1. save bearer value
         ConstantUrls.bearerToken = bearer
         
+        //2. save current logged-in user to NSUSerDefaults
+        var currentUserData : [String:String] = [:]
+        currentUserData[LoginViewController.selectedUser.username] = LoginViewController.selectedUser.userid
         
+        UserDefaults.standard.set(currentUserData, forKey: ConstantUrls.currentLoggedInUserKey)
+        
+        
+        //3. navigate to followers view controller
         let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
         
         followersVC.loggedUserData = LoginViewController.selectedUser

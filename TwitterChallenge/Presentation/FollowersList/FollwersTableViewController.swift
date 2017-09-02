@@ -118,9 +118,17 @@ class FollwersTableViewController: BaseTableViewController {
     @IBAction func logoutIsTapped(_ sender: UIBarButtonItem) {
         
         print("Logging out ...")
+       
+        // ** update: Do not remove user from sessionStore, Just remove him from UserDefaults
+        // this to ensure that recently Logged users sessions do not be removed
+        // and to ensure that only current logged in user is in UserDefaults TO Skip loginPage later
         
-        let store = Twitter.sharedInstance().sessionStore
-        store.logOutUserID((self.loggedUserData?.userid)!)
+        
+        //let store = Twitter.sharedInstance().sessionStore
+        //store.logOutUserID((self.loggedUserData?.userid)!)
+        
+        UserDefaults.standard.removeObject(forKey: ConstantUrls.currentLoggedInUserKey)
+        
         LoginViewController.updateUserDefaultsLoggedInUsers()
         
         print("Loggedout Successfully . ..")

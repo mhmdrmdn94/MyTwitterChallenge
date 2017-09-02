@@ -21,7 +21,7 @@ struct ConstantUrls {
     
     
     static let loggedinsKey = "LOGGED_INs"
-    
+    static let currentLoggedInUserKey = "CURRENT_USER"
     
     static let baseURL = "https://api.twitter.com"
     static let bearerURL = "/oauth2/token"
