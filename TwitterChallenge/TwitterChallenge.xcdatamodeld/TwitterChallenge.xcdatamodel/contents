@@ -8,16 +8,18 @@
         <attribute name="is_protected" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="profile_image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="screen_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TweetT" representedClassName="TweetT" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favourites" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="follower_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="retweets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="tweet_id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FollowerT" positionX="-45" positionY="0" width="128" height="150"/>
-        <element name="TweetT" positionX="133" positionY="9" width="128" height="120"/>
+        <element name="FollowerT" positionX="-45" positionY="0" width="128" height="163"/>
+        <element name="TweetT" positionX="133" positionY="9" width="128" height="133"/>
     </elements>
 </model>

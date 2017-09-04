@@ -12,9 +12,12 @@ class LoginRepository : RepositoryProtocol{
 
     
     var remoteDS : LoginRemoteDS?
+    var localDS : LoginLocalDS?
+    
     
     init() {
         remoteDS = LoginRemoteDS()
+        localDS = LoginLocalDS()
     }
 
     
@@ -22,17 +25,48 @@ class LoginRepository : RepositoryProtocol{
         
         
         
-        remoteDS?.getBearerToken(requestValues: requestValues as! LoginRequestVlaues, onSuccess_repo: {
+        // Check Internet Connection
+        if InternetReachability.checkInternetConnectionUsingAlamofire() {
         
-            responseStr in
-            onSuccess_usecase(responseStr)
+            print("????? Remotely Getting bearer")
+            // get data from RemoteDataSource
+            remoteDS?.getBearerToken(requestValues: requestValues as! LoginRequestVlaues, onSuccess_repo: {
+                
+                responseStr in
+                
+                //UPDATE UserDefaults value
+                UserDefaults.standard.set(responseStr, forKey: ConstantUrls.bearer)
+                
+                
+                onSuccess_usecase(responseStr)
+                
+            }, onFailure_repo: {
+                
+                errorStr in
+                onFailure_usecase(errorStr)
+                
+            })
+        
+        }else{
+           
+            print("????? Locally Getting bearer")
             
-        }, onFailure_repo: {
+            // get data from LocalDataSource
+            localDS?.getBearerToken(requestValues: requestValues as! LoginRequestVlaues, onSuccess_repo: {
+                
+                responseStr in
+                onSuccess_usecase(responseStr)
+                
+            }, onFailure_repo: {
+                
+                errorStr in
+                onFailure_usecase(errorStr)
+                
+            })
         
-            errorStr in
-            onFailure_usecase(errorStr)
+        }
         
-        })
+        
         
     }
 

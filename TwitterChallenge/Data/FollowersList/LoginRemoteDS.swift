@@ -48,8 +48,7 @@ class LoginRemoteDS : LoginDataSource {
                         let bearerToken = json["access_token"].string!
           
                         onSuccess_repo(bearerToken)
-                        
-                    
+          
                     }else{
                         onFailure_repo("Something went wrong!")
                     }

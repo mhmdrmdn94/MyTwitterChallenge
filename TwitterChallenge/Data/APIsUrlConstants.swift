@@ -14,6 +14,7 @@ struct ConstantUrls {
     /// NSUserDefaults
     static let loggedinUsersKey = "RECENT_USERS"
     static let currentLoggedInUserKey = "CURRENT_LOGGEDIN_USER"
+    static let bearer = "BEARER_TOKEN"
     
     /// BackendIntegration
     static let consumerKey = "xf29D7ZLIAcfB9NUkfzvlBGbt"
