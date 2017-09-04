@@ -37,7 +37,7 @@ class CoreDataOperator{
             ////// before inserting new follower to coredata, 
             //////     Check if it already exists in coredata to avoid duplicates
             
-            let haveDuplicates = CoreDataOperator.checkForDuplicates(followerid: followerObj.followerID!)
+            let haveDuplicates = CoreDataOperator.checkForDuplicates(inFollowers: followerObj.followerID!)
             
             if haveDuplicates{
                 continue
@@ -73,8 +73,53 @@ class CoreDataOperator{
     //MARK:- Persist Tweets List
     static func persistTweets(forFollower followerid: String, tweetsList tweets:[Tweet]) {
         
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
         
         
+        for tweetObj in tweets {
+            
+            // 1
+            let managedContext =
+                appDelegate.persistentContainer.viewContext
+            
+            // 2
+            let entity =
+                NSEntityDescription.entity(forEntityName: "TweetT",
+                                           in: managedContext)!
+            
+            ////// before inserting new follower to coredata,
+            //////     Check if it already exists in coredata to avoid duplicates
+            
+            let haveDuplicates = CoreDataOperator.checkForDuplicates(inTweets: tweetObj.tweetID!)
+            
+            if haveDuplicates{
+                continue
+            }
+            
+            
+            let tweet = NSManagedObject(entity: entity,
+                                           insertInto: managedContext)
+            
+            // 3
+            tweet.setValue(followerid, forKeyPath: "follower_id")
+            tweet.setValue(tweetObj.retweets!, forKeyPath: "retweets")
+            tweet.setValue(tweetObj.tweetID!, forKeyPath: "tweet_id")
+            tweet.setValue(tweetObj.favourites, forKeyPath: "favourites")
+            tweet.setValue(tweetObj.createdAt!, forKeyPath: "created_at")
+            tweet.setValue(tweetObj.content!, forKeyPath: "content")
+            
+            
+            // 4
+            do {
+                try managedContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+        }
         
         
         
@@ -129,14 +174,15 @@ class CoreDataOperator{
     
     
     //MARK:- get tweets list
-    static func fetchTweetsList(byFollowerId followerid: String) -> [NSManagedObject] {
+    static func fetchTweetsList(byFollowerId followerid: String, onSuccess_coredata:@escaping([NSManagedObject]) -> Void, onFailure_coredata:@escaping (String) -> Void){
         
         var tweets : [NSManagedObject] = []
         
         //1
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
-                return tweets
+                onFailure_coredata("Error occured while fetching local data.")
+                return
         }
         
         let managedContext =
@@ -161,16 +207,19 @@ class CoreDataOperator{
             }
             
             
+            onSuccess_coredata(tweets)
+            
+            
         } catch let error as NSError {
-            print("Could not fetch tweets. \(error), \(error.userInfo)")
+            print("Could not fetch followers. \(error), \(error.userInfo)")
+            onFailure_coredata("Error occured while fetching local data.")
         }
-        
-        return tweets
+       
     }
     
     
     
-    static func checkForDuplicates(followerid: String) -> Bool {
+    static func checkForDuplicates( inFollowers followerid: String) -> Bool {
         
         var isDuplicate = false
         
@@ -209,6 +258,45 @@ class CoreDataOperator{
         
     }
     
+    
+    static func checkForDuplicates(inTweets tweetid: String) -> Bool {
+        
+        var isDuplicate = false
+        
+        //1
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return isDuplicate
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "TweetT")
+        
+        //3
+        do {
+            
+            fetchRequest.predicate = NSPredicate(format: "tweet_id == %@", tweetid)
+            
+            let results = try managedContext.fetch(fetchRequest)
+            
+            if results.isEmpty{
+                isDuplicate = false
+            }else{
+                isDuplicate = true
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch followers. \(error), \(error.userInfo)")
+        }
+        
+        
+        return isDuplicate
+        
+    }
     
 
 

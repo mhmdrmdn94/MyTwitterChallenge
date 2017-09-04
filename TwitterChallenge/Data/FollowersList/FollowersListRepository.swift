@@ -66,7 +66,7 @@ class FollowersRepository: RepositoryProtocol {
             }, onFailure_repo: {
                 
                 errorStr in
-                onFailure_usecase("Something occured while fetching from cach memory!")
+                onFailure_usecase(errorStr)
                 
             })
             

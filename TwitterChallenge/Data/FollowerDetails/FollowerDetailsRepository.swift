@@ -25,17 +25,62 @@ class TweetsRepository : RepositoryProtocol{
     func getData(requestValues: RequestValues,onSuccess_usecase:@escaping(Any) -> Void, onFailure_usecase:@escaping (String) -> Void){
     
         
-        remoteDS?.getTweets(requestValues: requestValues as! TweetsRequestValues, onSuccess_repo: {
         
-            responseArr in
-            onSuccess_usecase(responseArr)
+        // Check Internet Connection
+        if InternetReachability.checkInternetConnectionUsingAlamofire() {
+            
+            // get data from RemoteDataSource
+            print("????? Remotely Getting tweets")
+       
+            
+            remoteDS?.getTweets(requestValues: requestValues as! TweetsRequestValues, onSuccess_repo: {
+                
+                responseArr in
+                
+                //1. update local tweets
+                let reqVal = requestValues as! TweetsRequestValues
+                CoreDataOperator.persistTweets(forFollower: reqVal.followerID!, tweetsList: responseArr)
+                
+                //2. populate new data to the view
+                onSuccess_usecase(responseArr)
+                
+            }, onFailure_repo: {
+                
+                errorStr in
+                onFailure_usecase(errorStr)
+                
+            })
+            
+            
+            
+            
+            
+        }else{
+            // get data from LocalDataSource
+            print("????? Locally Getting tweets")
+            
         
-        }, onFailure_repo: {
+            localDS?.getTweets(requestValues: requestValues as! TweetsRequestValues, onSuccess_repo: {
+                
+                responseArr in
+                
+                //1. update local tweets
+                let reqVal = requestValues as! TweetsRequestValues
+                CoreDataOperator.persistTweets(forFollower: reqVal.followerID!, tweetsList: responseArr)
+                
+                //2. populate new data to the view
+                onSuccess_usecase(responseArr)
+                
+            }, onFailure_repo: {
+                
+                errorStr in
+                onFailure_usecase(errorStr)
+                
+            })
+            
         
-            errorStr in
-            onFailure_usecase(errorStr)
+        }
         
-        })
         
     
     
