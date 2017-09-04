@@ -20,6 +20,13 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
     @IBOutlet weak var profileImage: WHRoundedImageView!
     
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: .valueChanged)
+        
+        return refreshControl
+    }()
+    
     
     var progressBar : MBProgressHUD?
     var presenter : TweetsPresenterProtocol?
@@ -46,6 +53,7 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         
         self.presenter = TweetsPresenter(view: self)
         
+        self.tweetsTableView.addSubview(self.refreshControl)
     }
 
     
@@ -73,6 +81,18 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         
     }
     
+    
+    //MARK:- Handle tableView refresh
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        // Do some reloading of data and update the table view's data source
+        // Fetch more objects from a web service, for example...
+        print("REFRESHING . ...");
+      
+        /// get tweets
+        self.presenter?.getTweets(followerID: (selectedFollower?.followerID!)!)
+        
+        refreshControl.endRefreshing()
+    }
     
     
     

@@ -46,6 +46,9 @@ class FollwersTableViewController: BaseTableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 300
         
+        // Configure Refresh Control
+       
+        self.refreshControl?.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: .valueChanged)
         
     }
 
@@ -64,6 +67,24 @@ class FollwersTableViewController: BaseTableViewController {
         
         
     }
+    
+    
+    
+    //MARK:- Handle tableView refresh
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        // Do some reloading of data and update the table view's data source
+        // Fetch more objects from a web service, for example...
+        print("REFRESHING . ...");
+      
+        let f = Follower(); f.fullName = "Dummy";f.backgroundmage=""; f.description=""; f.followerID = ""; f.profileImage = ""; f.protected = true; f.screenName = "";
+        followers.append(f)
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    
+    
+    
     
     // MARK: - Table view data source
 
