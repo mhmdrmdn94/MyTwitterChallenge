@@ -22,18 +22,28 @@ class CoreDataOperator{
                 return
         }
         
-        // 1
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        // 2
-        let entity =
-            NSEntityDescription.entity(forEntityName: "FollowerT",
-                                       in: managedContext)!
-        
         
         for followerObj in followers {
        
+            // 1
+            let managedContext =
+                appDelegate.persistentContainer.viewContext
+            
+            // 2
+            let entity =
+                NSEntityDescription.entity(forEntityName: "FollowerT",
+                                           in: managedContext)!
+            
+            ////// before inserting new follower to coredata, 
+            //////     Check if it already exists in coredata to avoid duplicates
+            
+            let haveDuplicates = CoreDataOperator.checkForDuplicates(followerid: followerObj.followerID!)
+            
+            if haveDuplicates{
+                continue
+            }
+            
+            
             let follower = NSManagedObject(entity: entity,
                                            insertInto: managedContext)
             
@@ -157,6 +167,48 @@ class CoreDataOperator{
         
         return tweets
     }
+    
+    
+    
+    static func checkForDuplicates(followerid: String) -> Bool {
+        
+        var isDuplicate = false
+        
+        //1
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return isDuplicate
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "FollowerT")
+        
+        //3
+        do {
+            
+            fetchRequest.predicate = NSPredicate(format: "follower_id == %@", followerid)
+            
+            let results = try managedContext.fetch(fetchRequest)
+
+            if results.isEmpty{
+                isDuplicate = false
+            }else{
+                isDuplicate = true
+            }
+
+        } catch let error as NSError {
+            print("Could not fetch followers. \(error), \(error.userInfo)")
+        }
+        
+        
+        return isDuplicate
+        
+    }
+    
     
 
 
