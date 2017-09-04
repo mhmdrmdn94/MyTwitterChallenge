@@ -15,6 +15,7 @@ class FollwersTableViewController: BaseTableViewController {
 
     
     var loggedUserData : User?
+    var isFromLogin : Bool?
     var presenter : FollowersPresenterProtocol?
     var progressBar : MBProgressHUD?
     
@@ -62,7 +63,11 @@ class FollwersTableViewController: BaseTableViewController {
         
             print("FollowersVC >>> currentID=\(logged.username)")
             
-            self.presenter?.getFollowers(userid: (loggedUserData?.userid)!)
+            self.presenter?.getFollowers(userid: (loggedUserData?.userid)!, isFromLogin: isFromLogin!)
+            
+            isFromLogin = false
+            
+            
         }
         
         
@@ -76,10 +81,17 @@ class FollwersTableViewController: BaseTableViewController {
         // Fetch more objects from a web service, for example...
         print("REFRESHING . ...");
       
-        let f = Follower(); f.fullName = "Dummy";f.backgroundmage=""; f.description=""; f.followerID = ""; f.profileImage = ""; f.protected = true; f.screenName = "";
-        followers.append(f)
-        self.tableView.reloadData()
+        
+        
+        if LoginViewController.selectedUser.nextCursor == "0"{
+            // you have received your full list of followers
+            return
+        }
+        
+        self.presenter?.getFollowers(userid: (loggedUserData?.userid)!, isFromLogin: false)
+
         refreshControl.endRefreshing()
+    
     }
     
     
@@ -114,7 +126,7 @@ class FollwersTableViewController: BaseTableViewController {
         followerName.text = followers[indexPath.row].fullName!
         followerHandle.text = "@\(followers[indexPath.row].screenName!)"
         followerBio.text = followers[indexPath.row].description!
-        followerImage.sd_setImage(with: URL(string: followers[indexPath.row].profileImage!), placeholderImage: UIImage(named: "user_default"))
+        followerImage.sd_setImage(with: URL(string: followers[indexPath.row].profileImage!), placeholderImage: UIImage(named: "profile_default"))
         
         
         return cell
@@ -156,13 +168,31 @@ class FollwersTableViewController: BaseTableViewController {
         // this to ensure that recently Logged users sessions do not be removed
         // and to ensure that only current logged in user is in UserDefaults TO Skip loginPage later
         
-        
         //let store = Twitter.sharedInstance().sessionStore
         //store.logOutUserID((self.loggedUserData?.userid)!)
         
+        
+        
         UserDefaults.standard.removeObject(forKey: ConstantUrls.currentLoggedInUserKey)
         
-       // LoginViewController.updateUserDefaultsLoggedInUsers()
+        
+        // update current user data at RecentLogsDictionary "Specially the Cursors"
+        
+        if let usersData = UserDefaults.standard.object(forKey: ConstantUrls.loggedinUsersKey) as? Data {
+            
+            var usersDict = NSKeyedUnarchiver.unarchiveObject(with: usersData) as! [String:User]
+           
+            usersDict[(loggedUserData?.username)!] = LoginViewController.selectedUser /// as this is updated
+        
+            //commit updates
+            let encodedDict = NSKeyedArchiver.archivedData(withRootObject: usersDict)
+            UserDefaults.standard.set(encodedDict, forKey: ConstantUrls.loggedinUsersKey)
+            
+        }else{
+            print("****** ERROR! :: NO LoggedINsDictionary in UserDefaults")
+        }
+        
+        
         
         print("Loggedout Successfully . ..")
         
@@ -210,8 +240,8 @@ extension FollwersTableViewController : FollowersViewProtocol{
     
     func updateFollowersList(newFollowers: [Follower] ){
     
-        followers = newFollowers
-    
+      //  followers.append(contentsOf: newFollowers)
+        followers.insert(contentsOf: newFollowers, at: 0)
     }
 
 

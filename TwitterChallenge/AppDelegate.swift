@@ -137,7 +137,7 @@ extension AppDelegate{
             
             let sessionObj = session as! TWTRSession
             
-            let newUser = User(username: sessionObj.userName, userid: sessionObj.userID, prevCursor: "", nextCursor: "")
+            let newUser = User(username: sessionObj.userName, userid: sessionObj.userID, prevCursor: "0", nextCursor: "0")
          
             loggedDictionary[sessionObj.userName] = newUser
         

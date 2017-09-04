@@ -17,7 +17,7 @@ class LoginViewController: BaseViewController {
    
     let usersDropDown = DropDown()
     var usersDropDown_dataSource : [String] = []
-    static var selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
+    static var selectedUser = User(username: "", userid: "", prevCursor: "0", nextCursor: "-1")
     var progressBar : MBProgressHUD?
     var presenter : LoginPresenter?
     
@@ -66,7 +66,7 @@ class LoginViewController: BaseViewController {
         usersDropDown_dataSource = []
         dropDownBtn.setTitleColor(UIColor.red, for: .normal)
         dropDownBtn.setTitle("No Recent Logs!", for: .normal)
-        LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
+        LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "0", nextCursor: "-1")
         loginBtn.isEnabled = false
         
         
@@ -173,7 +173,7 @@ class LoginViewController: BaseViewController {
             
                 LoginViewController.selectedUser = usersDict[item]!
                 
-                print("### onSelected:: \(LoginViewController.selectedUser.userid)")
+                print("### onSelected:: \(LoginViewController.selectedUser.userid), nxt=\(LoginViewController.selectedUser.nextCursor), pre=\(LoginViewController.selectedUser.prevCursor)")
                 
                 self.loginBtn.isEnabled = true
                 self.dropDownBtn.setTitle(item, for: .normal)
@@ -197,7 +197,7 @@ class LoginViewController: BaseViewController {
                 
                 // New User >>> Coming from safari
                 
-                LoginViewController.selectedUser = User(username: (session?.userName)!, userid: (session?.userID)!, prevCursor: "", nextCursor: "")
+                LoginViewController.selectedUser = User(username: (session?.userName)!, userid: (session?.userID)!, prevCursor: "0", nextCursor: "-1")
 
                 print("### onSignUP:: \(LoginViewController.selectedUser.userid)")
                 
@@ -218,24 +218,73 @@ class LoginViewController: BaseViewController {
     }
     
     
+    
+    
+    
+    
     //MARK:- This is where I populate LoggedInsUsers dictionary to UserDefaults from TWTRSessionStore
+    
+    /*
+     
+     check first if session user is in LoggedUsersDictionary or NOT
+     if true, take care of prev & nxt cursors 
+     if false, add new user with ZERO cursor values
+     
+     */
+    
+    
     static func updateUserDefaultsLoggedInUsers(){
         
-        var loggedDictionary : [String:User] = [:]
+        
         let store = Twitter.sharedInstance().sessionStore
         let sessions = store.existingUserSessions()
         
-        for session in sessions{
-            let sessionObj = session as! TWTRSession
+        // get the logged-in users dictionary
+
+        if let usersData = UserDefaults.standard.object(forKey: ConstantUrls.loggedinUsersKey) as? Data {
             
-            let newUser = User(username: sessionObj.userName, userid: sessionObj.userID, prevCursor: "", nextCursor: "")
+            var usersDict = NSKeyedUnarchiver.unarchiveObject(with: usersData) as! [String:User]
+        
+            for session in sessions{
+                
+                let sessionObj = session as! TWTRSession
+                if usersDict.index(forKey: sessionObj.userName) != nil{
+                // user already in LoggedUsersDictionary
+                
+                    /// do nothing
+                    
+                    
+                }else{
+                // he is a new user and is NOT in LoggedUsersDictionary
+                
+                    let newUser = User(username: sessionObj.userName, userid: sessionObj.userID, prevCursor: "0", nextCursor: "-1")
+                    usersDict[sessionObj.userName] = newUser
+                    
+                }
+            }
+            
+            /// update the UserDefaults
+            let encodedDict = NSKeyedArchiver.archivedData(withRootObject: usersDict)
+            UserDefaults.standard.set(encodedDict, forKey: ConstantUrls.loggedinUsersKey)
+            
+            
+        }else{
+            // first time to create logged-ins dictionary
+        
+            var loggedDictionary : [String:User] = [:]
+            let sessionObj = sessions[0] as! TWTRSession
+            let newUser = User(username: sessionObj.userName, userid: sessionObj.userID, prevCursor: "0", nextCursor: "-1")
             
             loggedDictionary[sessionObj.userName] = newUser
+            
+            /// update the UserDefaults
+            let encodedDict = NSKeyedArchiver.archivedData(withRootObject: loggedDictionary)
+            UserDefaults.standard.set(encodedDict, forKey: ConstantUrls.loggedinUsersKey)
+            
+            
         }
-       
-        let encodedDict = NSKeyedArchiver.archivedData(withRootObject: loggedDictionary)
-        UserDefaults.standard.set(encodedDict, forKey: ConstantUrls.loggedinUsersKey)
-   
+        
+        
     }
     
     
@@ -302,7 +351,7 @@ extension LoginViewController : LoginViewProtocol{
         let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
         
         followersVC.loggedUserData = LoginViewController.selectedUser
-        
+        followersVC.isFromLogin = true
         print("### beforeNavigation:: \(LoginViewController.selectedUser.userid)")
         
         self.navigationController?.pushViewController(followersVC, animated: true)

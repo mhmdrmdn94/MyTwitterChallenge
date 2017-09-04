@@ -38,5 +38,5 @@ struct FollowersUsecase : UsecaseProtocol {
 struct FollowersRequestValues : RequestValues {
     
     var loggedUserID : String?
-    
+    var isFromLogin : Bool?
 }

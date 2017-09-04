@@ -192,11 +192,12 @@ class CoreDataOperator{
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "TweetT")
         
+        
         //3
         do {
-            
             fetchRequest.predicate = NSPredicate(format: "follower_id == %@", followerid)
-            
+            //request.sortDescriptors = [NSSortDescriptor(key: "", ascending: false)]
+            //fetchRequest.fetchLimit = 10
             tweets = try managedContext.fetch(fetchRequest)
             
             for tweet in tweets{
@@ -218,6 +219,8 @@ class CoreDataOperator{
     }
     
     
+    
+    //MARK:- Remove duplicated
     
     static func checkForDuplicates( inFollowers followerid: String) -> Bool {
         

@@ -24,11 +24,11 @@ class FollowersPresenter: FollowersPresenterProtocol {
     }
     
     
-    func getFollowers(userid: String){
+    func getFollowers(userid: String, isFromLogin: Bool){
     
         self.view?.showProgressBar()
         
-        let requestValues = FollowersRequestValues(loggedUserID: userid)
+        let requestValues = FollowersRequestValues(loggedUserID: userid, isFromLogin: isFromLogin)
         
         
         usecase?.executeUseCase(requestValues: requestValues, onSuccess_preseneter: {

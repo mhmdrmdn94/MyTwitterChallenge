@@ -20,6 +20,6 @@ protocol FollowersViewProtocol {
 
 protocol FollowersPresenterProtocol {
     
-    func getFollowers(userid: String);
+    func getFollowers(userid: String, isFromLogin: Bool);
     
 }

@@ -32,25 +32,48 @@ class FollowersRepository: RepositoryProtocol {
             print("????? Remotely Getting followers")
             
             
-            remoteDS?.getFollowers(requestValues: requestValues as! FollowersRequestValues, onSuccess_repo: {
-                
-                responseArr in
-                
-                
-                //////1. Update the local data
-                let reqValues  = requestValues as! FollowersRequestValues
-                CoreDataOperator.persistFollowers(forUser: reqValues.loggedUserID!, followersList: responseArr)
-                
-                //////2. populate fetched data to the view
-                onSuccess_usecase(responseArr)
-                
-            }, onFailure_repo: {
-                
-                errorStr in
-                onFailure_usecase(errorStr)
-                
-            })
+            let reqVal = requestValues as! FollowersRequestValues
+            if reqVal.isFromLogin!{
             
+                //// get from local then get from remote
+                localDS?.getFollowers(requestValues: requestValues as! FollowersRequestValues, onSuccess_repo: {
+                    
+                    responseArr in
+                    onSuccess_usecase(responseArr)
+                    
+                }, onFailure_repo: {
+                    
+                    errorStr in
+                    onFailure_usecase(errorStr)
+                    
+                })
+            
+            }else{
+            
+                
+                //2.get new data
+                
+                
+                remoteDS?.getFollowers(requestValues: requestValues as! FollowersRequestValues, onSuccess_repo: {
+                    
+                    responseArr in
+                    
+                    
+                    //////1. Update the local data
+                    let reqValues  = requestValues as! FollowersRequestValues
+                    CoreDataOperator.persistFollowers(forUser: reqValues.loggedUserID!, followersList: responseArr)
+                    
+                    //////2. populate fetched data to the view
+                    onSuccess_usecase(responseArr)
+                    
+                }, onFailure_repo: {
+                    
+                    errorStr in
+                    onFailure_usecase(errorStr)
+                    
+                })
+            
+            }
             
             
         }else{

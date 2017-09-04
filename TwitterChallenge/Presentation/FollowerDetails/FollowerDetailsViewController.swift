@@ -64,11 +64,11 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         //1.
         print("=== \((selectedFollower?.backgroundmage!)!)")
         let bgURL = URL(string: (selectedFollower?.backgroundmage!)!)
-        backgroundImage.sd_setImage(with: bgURL, placeholderImage: UIImage(named: "user_default"))
+        backgroundImage.sd_setImage(with: bgURL, placeholderImage: UIImage(named: "background_default"))
         
         //2.
         let profileURL = URL(string: (selectedFollower?.profileImage!)!)
-        profileImage.sd_setImage(with: profileURL, placeholderImage: UIImage(named: "user_default"))
+        profileImage.sd_setImage(with: profileURL, placeholderImage: UIImage(named: "profile_default"))
         
         
         //3.
