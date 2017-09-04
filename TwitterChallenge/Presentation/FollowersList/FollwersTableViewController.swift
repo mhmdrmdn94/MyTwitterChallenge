@@ -14,7 +14,7 @@ import WHRoundedImageView
 class FollwersTableViewController: BaseTableViewController {
 
     
-    var loggedUserData : (username: String, userid: String)?
+    var loggedUserData : User?
     var presenter : FollowersPresenterProtocol?
     var progressBar : MBProgressHUD?
     
@@ -57,7 +57,7 @@ class FollwersTableViewController: BaseTableViewController {
         
         if let logged = loggedUserData{
         
-            print("FollowersVC >>> currentID=\(logged)")
+            print("FollowersVC >>> currentID=\(logged.username)")
             
             self.presenter?.getFollowers(userid: (loggedUserData?.userid)!)
         }
@@ -141,7 +141,7 @@ class FollwersTableViewController: BaseTableViewController {
         
         UserDefaults.standard.removeObject(forKey: ConstantUrls.currentLoggedInUserKey)
         
-        LoginViewController.updateUserDefaultsLoggedInUsers()
+       // LoginViewController.updateUserDefaultsLoggedInUsers()
         
         print("Loggedout Successfully . ..")
         

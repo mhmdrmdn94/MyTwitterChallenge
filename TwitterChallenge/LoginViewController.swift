@@ -17,7 +17,7 @@ class LoginViewController: BaseViewController {
    
     let usersDropDown = DropDown()
     var usersDropDown_dataSource : [String] = []
-    static var selectedUser : (username: String, userid: String) = ("","")
+    static var selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
     var progressBar : MBProgressHUD?
     var presenter : LoginPresenter?
     
@@ -46,6 +46,33 @@ class LoginViewController: BaseViewController {
     }
     
     
+    @IBAction func clearHistoryTapped(_ sender: UIButton) {
+   
+        print("Clearing Login History ...")
+    
+        let store = Twitter.sharedInstance().sessionStore
+        let sessions = store.existingUserSessions()
+        
+        for session in sessions{
+            
+            let sessionObj = session as! TWTRSession
+            store.logOutUserID(sessionObj.userID)
+        
+        }
+        
+        UserDefaults.standard.removeObject(forKey: ConstantUrls.loggedinUsersKey)
+        //LoginViewController.updateUserDefaultsLoggedInUsers()
+        
+        usersDropDown_dataSource = []
+        dropDownBtn.setTitleColor(UIColor.red, for: .normal)
+        dropDownBtn.setTitle("No Recent Logs!", for: .normal)
+        LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
+        loginBtn.isEnabled = false
+        
+        
+    }
+    
+    
     
     //MARK:- ViewDidLoad and ViewDidAppear
     override func viewDidLoad() {
@@ -69,41 +96,31 @@ class LoginViewController: BaseViewController {
         
         //Check first if a user is already logged-in
         
-        if UserDefaults.standard.value(forKey: ConstantUrls.currentLoggedInUserKey) != nil{
-        
-            let currentUserDictionary = UserDefaults.standard.value(forKey: ConstantUrls.currentLoggedInUserKey) as! [String:String]
-        
-            
-            //I am sure that there will exist ONLY one value
-            let (username, userid) = currentUserDictionary.first!
-            
-            //3. navigate to followers view controller
-            let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
-            
-            followersVC.loggedUserData = (username, userid)
-            
-            self.navigationController?.pushViewController(followersVC, animated: true)
-            
-            
+        if let savedobj = UserDefaults.standard.object(forKey: ConstantUrls.currentLoggedInUserKey) as? Data {
+           
+            let currentUserObj = NSKeyedUnarchiver.unarchiveObject(with: savedobj) as! User
+    
+            LoginViewController.selectedUser = currentUserObj
+      
+            self.getBearerToken()
+  
         }
         
-        
-        
+       
         
         self.navigationController?.isNavigationBarHidden = true
         
         usersDropDown_dataSource = []
-        LoginViewController.selectedUser = ("", "")
+        //LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
         loginBtn.isEnabled = false
         
         usersDropDown.anchorView = dropDownBtn
         
         //// get last loggedin users from NSUserDefaults
-        if UserDefaults.standard.value(forKey: ConstantUrls.loggedinsKey) != nil
-        {
-            /// append loggedIns to the dropDown menu
-            let usersDict = UserDefaults.standard.value(forKey: ConstantUrls.loggedinsKey) as! [String:String]
-                
+        if let usersData = UserDefaults.standard.object(forKey: ConstantUrls.loggedinUsersKey) as? Data {
+            
+            let usersDict = NSKeyedUnarchiver.unarchiveObject(with: usersData) as! [String:User]
+            
             
             for user in usersDict
             {
@@ -112,23 +129,23 @@ class LoginViewController: BaseViewController {
             
             if !usersDropDown_dataSource.isEmpty
             {
-                LoginViewController.selectedUser = ("", "")
+                //LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
                 loginBtn.isEnabled = false
                 dropDownBtn.setTitle("Tap to select", for: .normal)
-          
+                
             }else{
                 //// All are loggedOUT
                 /// No recent logs
                 dropDownBtn.setTitle("No Recent Logs!", for: .normal)
-                LoginViewController.selectedUser = ("", "")
+                //LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
                 loginBtn.isEnabled = false
                 
             }
-            
+        
         }else{
             //// No recent logs
             dropDownBtn.setTitle("No Recent Logs!", for: .normal)
-            LoginViewController.selectedUser = ("", "")
+            //LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
             loginBtn.isEnabled = false
             
         }
@@ -149,12 +166,21 @@ class LoginViewController: BaseViewController {
             LoginViewController.selectedUser.username = item
         
             /// get selected userid
-            let usersDict = UserDefaults.standard.value(forKey: ConstantUrls.loggedinsKey) as! [String:String]
-            LoginViewController.selectedUser.userid = usersDict[item]!
             
-            self.loginBtn.isEnabled = true
-            self.dropDownBtn.setTitle(item, for: .normal)
-            print("Selected item: \(LoginViewController.selectedUser) ")
+            if let usersData = UserDefaults.standard.object(forKey: ConstantUrls.loggedinUsersKey) as? Data {
+                
+                let usersDict = NSKeyedUnarchiver.unarchiveObject(with: usersData) as! [String:User]
+            
+                LoginViewController.selectedUser = usersDict[item]!
+                
+                print("### onSelected:: \(LoginViewController.selectedUser.userid)")
+                
+                self.loginBtn.isEnabled = true
+                self.dropDownBtn.setTitle(item, for: .normal)
+            
+            }else{
+                print("****** ERROR! :: NO LoggedINsDictionary in UserDefaults")
+            }
             
         }
 
@@ -168,12 +194,17 @@ class LoginViewController: BaseViewController {
         
         let logInButton = TWTRLogInButton(logInCompletion: { session, error in
             if (session != nil) {
+                
                 // New User >>> Coming from safari
                 
-                LoginViewController.selectedUser = ((session?.userName)!, (session?.userID)!)
+                LoginViewController.selectedUser = User(username: (session?.userName)!, userid: (session?.userID)!, prevCursor: "", nextCursor: "")
+
+                print("### onSignUP:: \(LoginViewController.selectedUser.userid)")
+                
+                LoginViewController.updateUserDefaultsLoggedInUsers()
                 
                 self.getBearerToken()
-
+                
             }else{
                
                 // show an ALERT includes ErrorDesc.
@@ -190,24 +221,28 @@ class LoginViewController: BaseViewController {
     //MARK:- This is where I populate LoggedInsUsers dictionary to UserDefaults from TWTRSessionStore
     static func updateUserDefaultsLoggedInUsers(){
         
-        var loggedDictionary : [String:String] = [:]
+        var loggedDictionary : [String:User] = [:]
         let store = Twitter.sharedInstance().sessionStore
         let sessions = store.existingUserSessions()
         
         for session in sessions{
-            
             let sessionObj = session as! TWTRSession
-            loggedDictionary[sessionObj.userName] = sessionObj.userID
+            
+            let newUser = User(username: sessionObj.userName, userid: sessionObj.userID, prevCursor: "", nextCursor: "")
+            
+            loggedDictionary[sessionObj.userName] = newUser
         }
-        
-        UserDefaults.standard.set(loggedDictionary, forKey: ConstantUrls.loggedinsKey)
+       
+        let encodedDict = NSKeyedArchiver.archivedData(withRootObject: loggedDictionary)
+        UserDefaults.standard.set(encodedDict, forKey: ConstantUrls.loggedinUsersKey)
+   
     }
     
     
     
     //MARK:- Getting bearerToken
     func getBearerToken(){
-        
+        print("### beforeGetBearer \(LoginViewController.selectedUser.userid)")
         self.presenter?.getBearerToken(encodedKeys: ConstantUrls.encodedToken)
         
     }
@@ -257,18 +292,18 @@ extension LoginViewController : LoginViewProtocol{
         
         //1. save bearer value
         ConstantUrls.bearerToken = bearer
-        
+      
         //2. save current logged-in user to NSUSerDefaults
-        var currentUserData : [String:String] = [:]
-        currentUserData[LoginViewController.selectedUser.username] = LoginViewController.selectedUser.userid
+        let dataObj = NSKeyedArchiver.archivedData(withRootObject: LoginViewController.selectedUser)
         
-        UserDefaults.standard.set(currentUserData, forKey: ConstantUrls.currentLoggedInUserKey)
-        
+        UserDefaults.standard.set(dataObj, forKey: ConstantUrls.currentLoggedInUserKey)
         
         //3. navigate to followers view controller
         let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! FollwersTableViewController
         
         followersVC.loggedUserData = LoginViewController.selectedUser
+        
+        print("### beforeNavigation:: \(LoginViewController.selectedUser.userid)")
         
         self.navigationController?.pushViewController(followersVC, animated: true)
         

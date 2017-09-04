@@ -112,7 +112,7 @@ extension AppDelegate{
         
       
         /////// Here, New user has been successflly AUTHENTICATED :)
-       self.updateLoggedInUsersMenu()
+       //self.updateLoggedInUsersMenu()
         
         
         return Twitter.sharedInstance().application(app, open: url, options: options)
@@ -129,20 +129,26 @@ extension AppDelegate{
         ///b. update the LOGGED_INs dictionary
         
         
-        var loggedDictionary : [String:String] = [:]
+        var loggedDictionary : [String:User] = [:]
         let store = Twitter.sharedInstance().sessionStore
         let sessions = store.existingUserSessions()
         
         for session in sessions{
             
             let sessionObj = session as! TWTRSession
-            loggedDictionary[sessionObj.userName] = sessionObj.userID
             
-            print("Session Contains ... \(sessionObj.userName)")
-            
+            let newUser = User(username: sessionObj.userName, userid: sessionObj.userID, prevCursor: "", nextCursor: "")
+         
+            loggedDictionary[sessionObj.userName] = newUser
+        
+            print(">> \(newUser.username)")
+        
         }
         
-        UserDefaults.standard.set(loggedDictionary, forKey: ConstantUrls.loggedinsKey)
+        
+        
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: loggedDictionary)
+        UserDefaults.standard.set(encodedData, forKey: ConstantUrls.loggedinUsersKey)
         
     }
 

@@ -40,6 +40,10 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         
         print("FollowerDetails screen is loaded...")
         
+        tweetsTableView.rowHeight = UITableViewAutomaticDimension
+        tweetsTableView.estimatedRowHeight = 300
+
+        
         self.presenter = TweetsPresenter(view: self)
         
     }
@@ -90,8 +94,17 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         
         // Configure the cell...
         
-        cell.textLabel?.text = tweets[indexPath.row].content!
+        let tweetText = cell.viewWithTag(1) as! UILabel
+        let tweetDate = cell.viewWithTag(2) as! UILabel
+        let tweetFav = cell.viewWithTag(4) as! UILabel
+        let tweetRet = cell.viewWithTag(3) as! UILabel
         
+        print(" ---- \( tweets[indexPath.row].retweets! ) :: \( tweets[indexPath.row].favourites! ) ")
+        
+        tweetText.text = tweets[indexPath.row].content!
+        tweetDate.text = tweets[indexPath.row].createdAt!
+        tweetFav.text = "\( tweets[indexPath.row].favourites! )"
+        tweetRet.text = "\( tweets[indexPath.row].retweets! )"
         
         
         return cell

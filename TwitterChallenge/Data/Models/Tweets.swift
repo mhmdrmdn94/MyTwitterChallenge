@@ -14,6 +14,10 @@ class Tweet {
     var tweetID : String?
     var content : String? //text
     
+    var createdAt : String?
+    var retweets : Int?
+    var favourites : Int?
+    
     init() {
         
     }
@@ -22,6 +26,11 @@ class Tweet {
         
         tweetID = json["id_str"].stringValue
         content = json["text"].stringValue
+        createdAt = json["created_at"].stringValue
+        retweets = json["retweet_count"].intValue
+        favourites = json["favorite_count"].intValue
+        
+        print("=== \(retweets!) ::: \(favourites!)")
     }
     
     

@@ -14,6 +14,7 @@
 		770DD2621F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770DD2601F4DC32A00F9AAB4 /* TwitterChallenge.xcdatamodeld */; };
 		770DD2641F4DC32A00F9AAB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770DD2631F4DC32A00F9AAB4 /* Assets.xcassets */; };
 		770DD2671F4DC32A00F9AAB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770DD2651F4DC32A00F9AAB4 /* LaunchScreen.storyboard */; };
+		778AB8E11F5C206000C88B04 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778AB8E01F5C206000C88B04 /* Users.swift */; };
 		7797EABC1F4F6658005C9734 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797EABB1F4F6658005C9734 /* LoginContract.swift */; };
 		7797EABE1F4F6667005C9734 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797EABD1F4F6667005C9734 /* LoginPresenter.swift */; };
 		7797EAC01F4F688A005C9734 /* FollowersListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797EABF1F4F688A005C9734 /* FollowersListContract.swift */; };
@@ -68,6 +69,7 @@
 		770DD2631F4DC32A00F9AAB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		770DD2661F4DC32A00F9AAB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		770DD2681F4DC32A00F9AAB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		778AB8E01F5C206000C88B04 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		7797EABB1F4F6658005C9734 /* LoginContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginContract.swift; sourceTree = "<group>"; };
 		7797EABD1F4F6667005C9734 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		7797EABF1F4F688A005C9734 /* FollowersListContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListContract.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			children = (
 				77DC48411F581772002E51E8 /* Followers.swift */,
 				77DC48431F5817A4002E51E8 /* Tweets.swift */,
+				778AB8E01F5C206000C88B04 /* Users.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				7797EABC1F4F6658005C9734 /* LoginContract.swift in Sources */,
 				77B708691F501EE60096CE34 /* FollowersListRemoteDS.swift in Sources */,
 				77B708791F502B510096CE34 /* Usecase.swift in Sources */,
+				778AB8E11F5C206000C88B04 /* Users.swift in Sources */,
 				7797EABE1F4F6667005C9734 /* LoginPresenter.swift in Sources */,
 				770DD25A1F4DC32A00F9AAB4 /* AppDelegate.swift in Sources */,
 				7797EAC61F4F68D2005C9734 /* FollowersDetailsPresenter.swift in Sources */,

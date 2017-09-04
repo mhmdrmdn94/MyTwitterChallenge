@@ -26,6 +26,9 @@ class FollowersRemoteDS: FollowersDataSource {
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ConstantUrls.bearerToken)"
         ]
+    
+        
+        print(">>>> \(url)")
         
         //4. make your api request
         alamofireSharedInstance.executeGetRequest(url: url, parameters: nil, header: headers, onSuccess: {

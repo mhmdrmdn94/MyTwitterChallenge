@@ -46,8 +46,7 @@ class LoginRemoteDS : LoginDataSource {
                     if  json["token_type"].string! == "bearer"{
                     
                         let bearerToken = json["access_token"].string!
-                        print(" >>> BEARER: \(bearerToken)")
-                        
+          
                         onSuccess_repo(bearerToken)
                         
                     

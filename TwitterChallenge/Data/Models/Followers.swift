@@ -30,10 +30,14 @@ class Follower {
         description = json["description"].stringValue
         screenName = json["screen_name"].stringValue
         profileImage = json["profile_image_url_https"].stringValue
+        
+        //getting a high quality profile image for a nice list appearance!
+        //profileImage = profileImage?.replacingOccurrences(of: "_normal", with: "_bigger") //does no have good appearance
+        profileImage = profileImage?.replacingOccurrences(of: "_normal", with: "")
+        
         backgroundmage = json["profile_background_image_url_https"].stringValue
         protected = json["protected"].boolValue
         
-        print(">>>>>>>> \(backgroundmage!)")
     }
     
     
