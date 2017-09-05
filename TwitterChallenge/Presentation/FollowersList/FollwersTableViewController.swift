@@ -128,6 +128,7 @@ class FollwersTableViewController: BaseTableViewController {
         followerBio.text = followers[indexPath.row].description!
         followerImage.sd_setImage(with: URL(string: followers[indexPath.row].profileImage!), placeholderImage: UIImage(named: "profile_default"))
         
+        followerBio.layer.masksToBounds = true
         
         return cell
     }
@@ -148,7 +149,12 @@ class FollwersTableViewController: BaseTableViewController {
             /// You are authorized to access his profile
             let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "detailsVC") as! FollowerDetailsViewController
             
+            print("++  \(followers[indexPath.row].screenName!) ")
+            
             detailsVC.selectedFollower = followers[indexPath.row]
+            
+            print("++  \(detailsVC.selectedFollower!.screenName!) ")
+            
             
             self.navigationController?.pushViewController(detailsVC, animated: true)
         
@@ -161,29 +167,39 @@ class FollwersTableViewController: BaseTableViewController {
     //MARK:- Logout button is tapped
     
     @IBAction func logoutIsTapped(_ sender: UIBarButtonItem) {
-        
-        print("Logging out ...")
        
-        // ** update: Do not remove user from sessionStore, Just remove him from UserDefaults
-        // this to ensure that recently Logged users sessions do not be removed
-        // and to ensure that only current logged in user is in UserDefaults TO Skip loginPage later
+        let alert = UIAlertController(title: "", message: "Do you really want to logout?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Logout", style: .destructive) { action in
+            
+            self.logout()
+            
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default) { action in
+            // perhaps use action.title here
         
-        //let store = Twitter.sharedInstance().sessionStore
-        //store.logOutUserID((self.loggedUserData?.userid)!)
+            //Do nothing
         
+        })
         
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+ 
+    
+    
+    //MARK:- perform logout operation
+    func logout (){
         
         UserDefaults.standard.removeObject(forKey: ConstantUrls.currentLoggedInUserKey)
-        
         
         // update current user data at RecentLogsDictionary "Specially the Cursors"
         
         if let usersData = UserDefaults.standard.object(forKey: ConstantUrls.loggedinUsersKey) as? Data {
             
             var usersDict = NSKeyedUnarchiver.unarchiveObject(with: usersData) as! [String:User]
-           
+            
             usersDict[(loggedUserData?.username)!] = LoginViewController.selectedUser /// as this is updated
-        
+            
             //commit updates
             let encodedDict = NSKeyedArchiver.archivedData(withRootObject: usersDict)
             UserDefaults.standard.set(encodedDict, forKey: ConstantUrls.loggedinUsersKey)
@@ -192,16 +208,21 @@ class FollwersTableViewController: BaseTableViewController {
             print("****** ERROR! :: NO LoggedINsDictionary in UserDefaults")
         }
         
-        
-        
         print("Loggedout Successfully . ..")
         
         self.navigationController?.popViewController(animated: true)
         
+        
     }
     
     
+    
 }
+
+
+
+
+
 
 
 //MARK:- Extension for ViewProtocol

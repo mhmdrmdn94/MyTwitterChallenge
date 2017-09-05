@@ -26,6 +26,8 @@ class LoginViewController: BaseViewController {
     
     
     @IBOutlet weak var lowerVeiw: UIView!
+    
+    @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var dropDownBtn: UIButton!
     @IBAction func dropDownBtnTapped(_ sender: UIButton) {
         
@@ -45,11 +47,34 @@ class LoginViewController: BaseViewController {
         
     }
     
-    
+    //MARK:- Clearing login history
     @IBAction func clearHistoryTapped(_ sender: UIButton) {
    
-        print("Clearing Login History ...")
+        
+        let alert = UIAlertController(title: "Warning!", message: "Do you really want to clear login history?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Clear History", style: .destructive) { action in
+            
+            self.clearHistory()
+            
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default) { action in
+            // perhaps use action.title here
+            
+            //Do nothing
+            
+        })
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
     
+    
+    func clearHistory() {
+        
+        
+        print("Clearing Login History ...")
+        
         let store = Twitter.sharedInstance().sessionStore
         let sessions = store.existingUserSessions()
         
@@ -57,7 +82,7 @@ class LoginViewController: BaseViewController {
             
             let sessionObj = session as! TWTRSession
             store.logOutUserID(sessionObj.userID)
-        
+            
         }
         
         UserDefaults.standard.removeObject(forKey: ConstantUrls.loggedinUsersKey)
@@ -68,6 +93,8 @@ class LoginViewController: BaseViewController {
         dropDownBtn.setTitle("No Recent Logs!", for: .normal)
         LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "0", nextCursor: "-1")
         loginBtn.isEnabled = false
+        
+        
         
         
     }
@@ -213,8 +240,8 @@ class LoginViewController: BaseViewController {
             }
         })
         
-        logInButton.center = self.lowerVeiw.center
-        self.view.addSubview(logInButton)
+        logInButton.center = self.innerView.center
+        self.lowerVeiw.addSubview(logInButton)
     }
     
     

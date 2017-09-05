@@ -72,8 +72,7 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         
         
         //3.
-        usenameLabel.text = "@\(String(describing: selectedFollower?.screenName!))"
-        
+        usenameLabel.text = "@\(String(describing: selectedFollower!.fullName!))"
         
         /// get tweets
         self.presenter?.getTweets(followerID: (selectedFollower?.followerID!)!)
@@ -122,11 +121,15 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         print(" ---- \( tweets[indexPath.row].retweets! ) :: \( tweets[indexPath.row].favourites! ) ")
         
         tweetText.text = tweets[indexPath.row].content!
-        tweetDate.text = tweets[indexPath.row].createdAt!
+        
+        let formattedDate = self.formateDate(original: tweets[indexPath.row].createdAt!)
+        tweetDate.text = formattedDate
+        
         tweetFav.text = "\( tweets[indexPath.row].favourites! )"
         tweetRet.text = "\( tweets[indexPath.row].retweets! )"
         
-        
+        tweetText.layer.masksToBounds = true
+       
         return cell
     }
 
@@ -142,6 +145,14 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
         
     }
     
+    
+    func formateDate(original: String) -> String {
+        
+        var arr = original.components(separatedBy: " ")
+        
+        return arr[0] + ", " + arr[2] + " " + arr[1] + ", " + arr[5] + " - " + arr[3]
+        
+    }
     
     
     
