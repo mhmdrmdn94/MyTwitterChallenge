@@ -51,24 +51,22 @@ class FollwersTableViewController: BaseTableViewController {
        
         self.refreshControl?.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: .valueChanged)
         
+        
+        if let logged = loggedUserData{
+            
+            print("FollowersVC >>> currentID=\(logged.username)")
+            
+            self.presenter?.getFollowers(userid: (loggedUserData?.userid)!, isFromLogin: isFromLogin!)
+            
+            isFromLogin = false
+        }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = true
-        
-        
-        if let logged = loggedUserData{
-        
-            print("FollowersVC >>> currentID=\(logged.username)")
-            
-            self.presenter?.getFollowers(userid: (loggedUserData?.userid)!, isFromLogin: isFromLogin!)
-            
-            isFromLogin = false
-            
-            
-        }
         
         
     }
@@ -80,22 +78,17 @@ class FollwersTableViewController: BaseTableViewController {
         // Do some reloading of data and update the table view's data source
         // Fetch more objects from a web service, for example...
         print("REFRESHING . ...");
-      
-        
         
         if LoginViewController.selectedUser.nextCursor == "0"{
             // you have received your full list of followers
+            refreshControl.endRefreshing()
             return
         }
         
         self.presenter?.getFollowers(userid: (loggedUserData?.userid)!, isFromLogin: false)
-
         refreshControl.endRefreshing()
     
     }
-    
-    
-    
     
     
     // MARK: - Table view data source
@@ -139,25 +132,17 @@ class FollwersTableViewController: BaseTableViewController {
         
         //// first, check if his time line is protected or not
         if followers[indexPath.row].protected!{
-        
+          
             //Sorry, You don't follow him, so you are not authorized to see his profile! [Protected timeline]
-       
             self.showAlert(message: "Follow and Try Again.", title: "Sorry, \( followers[indexPath.row].fullName! ) has a protected profile!")
-            
         }else{
         
             /// You are authorized to access his profile
             let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "detailsVC") as! FollowerDetailsViewController
             
-            print("++  \(followers[indexPath.row].screenName!) ")
-            
             detailsVC.selectedFollower = followers[indexPath.row]
             
-            print("++  \(detailsVC.selectedFollower!.screenName!) ")
-            
-            
             self.navigationController?.pushViewController(detailsVC, animated: true)
-        
         }
         
     }
@@ -185,14 +170,11 @@ class FollwersTableViewController: BaseTableViewController {
         
     }
  
-    
-    
+ 
     //MARK:- perform logout operation
     func logout (){
         
         UserDefaults.standard.removeObject(forKey: ConstantUrls.currentLoggedInUserKey)
-        
-        // update current user data at RecentLogsDictionary "Specially the Cursors"
         
         if let usersData = UserDefaults.standard.object(forKey: ConstantUrls.loggedinUsersKey) as? Data {
             
@@ -215,13 +197,7 @@ class FollwersTableViewController: BaseTableViewController {
         
     }
     
-    
-    
 }
-
-
-
-
 
 
 

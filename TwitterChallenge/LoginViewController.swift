@@ -82,20 +82,15 @@ class LoginViewController: BaseViewController {
             
             let sessionObj = session as! TWTRSession
             store.logOutUserID(sessionObj.userID)
-            
         }
         
         UserDefaults.standard.removeObject(forKey: ConstantUrls.loggedinUsersKey)
-        //LoginViewController.updateUserDefaultsLoggedInUsers()
         
         usersDropDown_dataSource = []
         dropDownBtn.setTitleColor(UIColor.red, for: .normal)
         dropDownBtn.setTitle("No Recent Logs!", for: .normal)
         LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "0", nextCursor: "-1")
         loginBtn.isEnabled = false
-        
-        
-        
         
     }
     
@@ -110,7 +105,6 @@ class LoginViewController: BaseViewController {
      
         ///// Dynamically add the LoginWithTwitter button for one time
         self.addTWTRLoginBtn()
-        
         
         
         //Linking presenter
@@ -130,15 +124,12 @@ class LoginViewController: BaseViewController {
             LoginViewController.selectedUser = currentUserObj
       
             self.getBearerToken()
-  
+     
         }
-        
-       
         
         self.navigationController?.isNavigationBarHidden = true
         
         usersDropDown_dataSource = []
-        //LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
         loginBtn.isEnabled = false
         
         usersDropDown.anchorView = dropDownBtn
@@ -148,7 +139,6 @@ class LoginViewController: BaseViewController {
             
             let usersDict = NSKeyedUnarchiver.unarchiveObject(with: usersData) as! [String:User]
             
-            
             for user in usersDict
             {
                 usersDropDown_dataSource.append(user.key)
@@ -156,7 +146,6 @@ class LoginViewController: BaseViewController {
             
             if !usersDropDown_dataSource.isEmpty
             {
-                //LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
                 loginBtn.isEnabled = false
                 dropDownBtn.setTitle("Tap to select", for: .normal)
                 
@@ -164,7 +153,6 @@ class LoginViewController: BaseViewController {
                 //// All are loggedOUT
                 /// No recent logs
                 dropDownBtn.setTitle("No Recent Logs!", for: .normal)
-                //LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
                 loginBtn.isEnabled = false
                 
             }
@@ -172,11 +160,9 @@ class LoginViewController: BaseViewController {
         }else{
             //// No recent logs
             dropDownBtn.setTitle("No Recent Logs!", for: .normal)
-            //LoginViewController.selectedUser = User(username: "", userid: "", prevCursor: "", nextCursor: "")
             loginBtn.isEnabled = false
             
         }
-        
         
         usersDropDown.dataSource = usersDropDown_dataSource
       
@@ -199,8 +185,6 @@ class LoginViewController: BaseViewController {
                 let usersDict = NSKeyedUnarchiver.unarchiveObject(with: usersData) as! [String:User]
             
                 LoginViewController.selectedUser = usersDict[item]!
-                
-                print("### onSelected:: \(LoginViewController.selectedUser.userid), nxt=\(LoginViewController.selectedUser.nextCursor), pre=\(LoginViewController.selectedUser.prevCursor)")
                 
                 self.loginBtn.isEnabled = true
                 self.dropDownBtn.setTitle(item, for: .normal)
@@ -246,11 +230,7 @@ class LoginViewController: BaseViewController {
     
     
     
-    
-    
-    
     //MARK:- This is where I populate LoggedInsUsers dictionary to UserDefaults from TWTRSessionStore
-    
     /*
      
      check first if session user is in LoggedUsersDictionary or NOT
@@ -258,8 +238,6 @@ class LoginViewController: BaseViewController {
      if false, add new user with ZERO cursor values
      
      */
-    
-    
     static func updateUserDefaultsLoggedInUsers(){
         
         
@@ -307,22 +285,17 @@ class LoginViewController: BaseViewController {
             /// update the UserDefaults
             let encodedDict = NSKeyedArchiver.archivedData(withRootObject: loggedDictionary)
             UserDefaults.standard.set(encodedDict, forKey: ConstantUrls.loggedinUsersKey)
-            
-            
         }
-        
         
     }
     
-    
-    
+   
     //MARK:- Getting bearerToken
     func getBearerToken(){
-        print("### beforeGetBearer \(LoginViewController.selectedUser.userid)")
+    
         self.presenter?.getBearerToken(encodedKeys: ConstantUrls.encodedToken)
         
     }
-    
     
 }
 
@@ -379,8 +352,7 @@ extension LoginViewController : LoginViewProtocol{
         
         followersVC.loggedUserData = LoginViewController.selectedUser
         followersVC.isFromLogin = true
-        print("### beforeNavigation:: \(LoginViewController.selectedUser.userid)")
-        
+     
         self.navigationController?.pushViewController(followersVC, animated: true)
         
         

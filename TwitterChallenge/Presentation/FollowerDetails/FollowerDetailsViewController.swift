@@ -149,23 +149,9 @@ class FollowerDetailsViewController: BaseViewController, UITableViewDelegate, UI
     func formateDate(original: String) -> String {
         
         var arr = original.components(separatedBy: " ")
-        
         return arr[0] + ", " + arr[2] + " " + arr[1] + ", " + arr[5] + " - " + arr[3]
-        
     }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
 }
 
 //MARK:- Extension for ViewProtocol
@@ -209,6 +195,22 @@ extension FollowerDetailsViewController : TweetsViewProtocol{
         print("Updating Tweets ...")
         tweets = newTweets
     
+        
+        if tweets.isEmpty{
+        
+            let alert = UIAlertController(title: "", message: "This user hasn't tweeted yet!", preferredStyle: .alert)
+           
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default) { action in
+                // perhaps use action.title here
+                
+                //Do nothing
+                
+            })
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
 
 

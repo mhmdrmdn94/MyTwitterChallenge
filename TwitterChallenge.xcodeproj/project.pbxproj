@@ -42,7 +42,6 @@
 		77B7086D1F501F170096CE34 /* FollowerDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7086C1F501F170096CE34 /* FollowerDetailsDataSource.swift */; };
 		77B7086F1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7086E1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift */; };
 		77B708711F501F420096CE34 /* FollowerDetailsLocalDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708701F501F420096CE34 /* FollowerDetailsLocalDS.swift */; };
-		77B708731F5020250096CE34 /* APIsDataConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708721F5020250096CE34 /* APIsDataConstant.swift */; };
 		77B708791F502B510096CE34 /* Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B708781F502B510096CE34 /* Usecase.swift */; };
 		77B7087B1F502B970096CE34 /* LoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087A1F502B970096CE34 /* LoginUsecase.swift */; };
 		77B7087D1F502BB80096CE34 /* FollowersListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B7087C1F502BB80096CE34 /* FollowersListUsecase.swift */; };
@@ -99,7 +98,6 @@
 		77B7086C1F501F170096CE34 /* FollowerDetailsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsDataSource.swift; sourceTree = "<group>"; };
 		77B7086E1F501F2E0096CE34 /* FollowerDetailsRemoteDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsRemoteDS.swift; sourceTree = "<group>"; };
 		77B708701F501F420096CE34 /* FollowerDetailsLocalDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerDetailsLocalDS.swift; sourceTree = "<group>"; };
-		77B708721F5020250096CE34 /* APIsDataConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsDataConstant.swift; sourceTree = "<group>"; };
 		77B708781F502B510096CE34 /* Usecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usecase.swift; sourceTree = "<group>"; };
 		77B7087A1F502B970096CE34 /* LoginUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUsecase.swift; sourceTree = "<group>"; };
 		77B7087C1F502BB80096CE34 /* FollowersListUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListUsecase.swift; sourceTree = "<group>"; };
@@ -284,7 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				77DD38891F53380000B23A1B /* APIsUrlConstants.swift */,
-				77B708721F5020250096CE34 /* APIsDataConstant.swift */,
 				77B708581F501D9D0096CE34 /* Repository.swift */,
 				77DC48401F58175C002E51E8 /* Models */,
 				7700CAD11F5DBD0D00D5DB3B /* Caching API */,
@@ -515,7 +512,6 @@
 				770DD25C1F4DC32A00F9AAB4 /* LoginViewController.swift in Sources */,
 				77B7087F1F502C070096CE34 /* FollowerDetailsUsecase.swift in Sources */,
 				77B7087D1F502BB80096CE34 /* FollowersListUsecase.swift in Sources */,
-				77B708731F5020250096CE34 /* APIsDataConstant.swift in Sources */,
 				77B708611F501E8D0096CE34 /* LoginDataSource.swift in Sources */,
 				77B708631F501EA20096CE34 /* LoginRemoteDS.swift in Sources */,
 				77DD388A1F53380000B23A1B /* APIsUrlConstants.swift in Sources */,
